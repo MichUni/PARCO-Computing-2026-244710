@@ -11,6 +11,7 @@ class matrix {
     int* aCols;
     double* values;
 
+    double* productArr;
 public:
     matrix(const std::string fileName);
     ~matrix();
