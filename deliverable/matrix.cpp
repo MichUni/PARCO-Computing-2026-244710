@@ -33,7 +33,8 @@ matrix::matrix(std::string fileName) {
     values = new double[numValues];
 
     if(isSorted) {
-        int row, col, val;
+        int row, col;
+        double val;
 
         for(int i = 0;i < numValues;i++) {
             file >> row >> col >> val;
