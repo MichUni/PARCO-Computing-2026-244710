@@ -21,16 +21,15 @@ int main(int argc, char *argv[]) {
     int length;
     double* result;
 
-    std::cout << "starting product" << std::endl;
     GET_TIME(start);
-    if(numOfThreads == 0)
+    if(numOfThreads == 1)
         m.sequentialProduct(result, length);
     else
         m.parallelProduct(result, length, numOfThreads);
     GET_TIME(finish);
 
     double time = finish - start;
-    std::cout << "time: " << time << "s" << std::endl;
+    std::cout << time;
 
     delete[] result;
     
