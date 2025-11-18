@@ -121,7 +121,7 @@ void matrix::parallelProduct(double* &resultArray, int &arrLength, int numOfThre
 
     arrLength = numRows;
 
-    #pragma omp parallel for schedule(static) num_threads(numOfThreads)
+    #pragma omp parallel for schedule(runtime) num_threads(numOfThreads)
         for(int i = 0;i < numRows;i++) {
             double sum = 0;
 
