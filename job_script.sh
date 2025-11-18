@@ -1,0 +1,61 @@
+#!/bin/bash
+#PBS -N timesBenchmark
+
+#PBS -o results/timesBenchmark.out
+#PBS -e results/timesBenchmark.err
+
+#PBS -q short_cpuQ
+#PBS -l walltime=06:00:00
+#PBS -l select=1:ncpus=64:mem=32gb
+
+module load gcc91
+alias g++=g++-9.1.0
+
+cd "$PBS_O_WORKDIR"
+
+g++ .\main.cpp .\matrix.cpp -fopenmp -o matrixProduct 
+
+# matrices array
+matricesArr=(0 1 2 3 4)
+
+# threads array
+threadsArr=(1 2 4 8 16 32 64)
+
+# parallel mode array [ static dynamic guided ]
+modeArr=(0 1 2)
+
+# chunk size array
+chunkSizeArr=(1 10 100 1000)
+
+# open output file and clear it
+outputFile="results/results.csv"
+echo -n "" > "$outputFile"
+
+# c++ function
+execute() {
+	mapfile -t results < <(./deliverable/matrixProduct "$@")
+	sortedResults=($(printf "%s\n" "${results[@]}" | sort -n))
+
+	output="${sortedResults[8]}"
+	output=$(echo -n "$output" | tr -d '\r\n')
+	echo "$output seconds" >> "$outputFile"
+}
+
+for matrix in "${matricesArr[@]}"; do
+	echo "matrix $matrix" >> "$outputFile"
+
+	for threads in "${threadsArr[@]}"; do
+		if [ "$threads" -eq 1 ]; then
+			echo -n "sequential: " >> "$outputFile"
+			execute "$matrix" "$threads" 10
+			continue
+		fi
+ 
+		for mode in "${modeArr[@]}"; do
+			for chunkSize in "${chunkSizeArr[@]}"; do
+				echo -n "$threads threads | $mode mode | $chunkSize chunkSize: " >> "$outputFile"
+				execute "$matrix" "$threads" "$mode" "$chunkSize" 10
+			done
+		done
+	done
+done
