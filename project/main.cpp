@@ -80,20 +80,15 @@ int main(int argc, char *argv[]) {
     for(int i = 0;i < numOfRuns;i++) {
         double start, finish;
 
-        int length;
-        double* result;
-
         GET_TIME(start);
         if(numOfThreads == 1)
-            m.sequentialProduct(result, length);
+            m.sequentialProduct();
         else
-            m.parallelProduct(result, length, numOfThreads);
+            m.parallelProduct(numOfThreads);
         GET_TIME(finish);
 
         double time = finish - start;
         std::cout << time << std::endl;
-
-        delete[] result;
     }
     
     return 0;

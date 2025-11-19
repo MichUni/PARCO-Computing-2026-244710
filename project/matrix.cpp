@@ -92,6 +92,9 @@ matrix::matrix(std::string fileName) {
     productArr = new double[numCols];
     for(int i = 0;i < numCols;i++)
         productArr[i] = rand();
+        
+    resultArr = new double[numRows];
+    std::fill_n(resultArray, numRows, 0);
 }
 
 matrix::~matrix() {
@@ -100,27 +103,18 @@ matrix::~matrix() {
     delete[] values;
 
     delete[] productArr;
+    delete[] resultArr;
 }
 
-void matrix::sequentialProduct(double* &resultArray, int &arrLength) {
-    resultArray = new double[numRows];
-    std::fill_n(resultArray, numRows, 0);
-
-    arrLength = numRows;
-
-    for(int i = 0;i < numRows;i++) {
+void matrix::sequentialProduct() {
+	for(int i = 0;i < numRows;i++) {
         for(int j = aRows[i];j < aRows[i + 1];j++) {
-            resultArray[i] += values[j] * productArr[aCols[j]];
+            resultArr[i] += values[j] * productArr[aCols[j]];
         }
     }
 }
 
-void matrix::parallelProduct(double* &resultArray, int &arrLength, int numOfThreads) {
-    resultArray = new double[numRows];
-    std::fill_n(resultArray, numRows, 0);
-
-    arrLength = numRows;
-
+void matrix::parallelProduct(int numOfThreads) {
     #pragma omp parallel for schedule(runtime) num_threads(numOfThreads)
         for(int i = 0;i < numRows;i++) {
             double sum = 0;
@@ -129,6 +123,6 @@ void matrix::parallelProduct(double* &resultArray, int &arrLength, int numOfThre
                 sum += values[j] * productArr[aCols[j]];
             }
 
-            resultArray[i] = sum;
+            resultArr[i] = sum;
         }
 }

@@ -12,12 +12,13 @@ class matrix {
     double* values;
 
     double* productArr;
+    double* resultArr;
 public:
     matrix(const std::string fileName);
     ~matrix();
 
-    void sequentialProduct(double* &resultArray, int &arrLength);
-    void parallelProduct(double* &resultArray, int &arrLength, int numOfThreads);
+    void sequentialProduct();
+    void parallelProduct(int numOfThreads);
 };
 
 #endif

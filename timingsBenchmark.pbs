@@ -29,7 +29,7 @@ chunkSizeArr=(1 10 100 1000)
 
 # open output file and clear it
 outputFile="results/timingsResults.csv"
-echo -n "" > "$outputFile"
+echo "matrix | threads | mode | chunkSize | time" > "$outputFile"
 
 # c++ function
 execute() {
@@ -38,23 +38,21 @@ execute() {
 
 	output="${sortedResults[8]}"
 	output=$(echo -n "$output" | tr -d '\r\n')
-	echo "$output seconds" >> "$outputFile"
+	echo "$output"
 }
 
 for matrix in "${matricesArr[@]}"; do
-	echo "matrix $matrix" >> "$outputFile"
-
 	for threads in "${threadsArr[@]}"; do
 		if [ "$threads" -eq 1 ]; then
-			echo -n "sequential: " >> "$outputFile"
-			execute "$matrix" "$threads" 10
+			time=$(execute "$matrix" "$threads" 10)
+			echo "$matrix | $threads | -1 | -1 | $time" >> "$outputFile"
 			continue
 		fi
  
 		for mode in "${modeArr[@]}"; do
 			for chunkSize in "${chunkSizeArr[@]}"; do
-				echo -n "$threads threads | $mode mode | $chunkSize chunkSize: " >> "$outputFile"
-				execute "$matrix" "$threads" "$mode" "$chunkSize" 10
+				time=$(execute "$matrix" "$threads" "$mode" "$chunkSize" 10)
+				echo "$matrix | $threads | $mode | $chunkSize | $time" >> "$outputFile"
 			done
 		done
 	done
