@@ -31,7 +31,7 @@ chunkSizeArr=(1 10 100 1000)
 
 # output CSV file
 outputFile="results/perfResults.csv"
-echo "matrix | threads | mode | chunkSize | cycles | instructions | cache-references | cache-misses | LLC-loads | LLC-load-misses" > "$outputFile"
+echo "matrix,threads,mode,chunkSize,cycles,instructions,cache-references,cache-misses,LLC-loads,LLC-load-misses" > "$outputFile"
 
 execute() {
     	args=("$@")
@@ -54,7 +54,7 @@ execute() {
 	llc_loads=${llc_loads:-0}
     	llc_misses=${llc_misses:-0}
 
-    	echo "$cycles | $instructions | $cache_refs | $cache_misses | $llc_loads | $llc_misses"
+    	echo "$cycles,$instructions,$cache_refs,$cache_misses,$llc_loads,$llc_misses"
 }
 
 for matrix in "${matricesArr[@]}"; do
@@ -62,14 +62,14 @@ for matrix in "${matricesArr[@]}"; do
         	if [ "$threads" -eq 1 ]; then
             		# sequential run (mode and chunkSize irrelevant)
             		averages=$(execute "$matrix" "$threads" 1)
-            		echo "$matrix | $threads | -1 | -1 | $averages" >> "$outputFile"
+            		echo "$matrix,$threads,-1,-1,$averages" >> "$outputFile"
             		continue
         	fi
 
         	for mode in "${modeArr[@]}"; do
             		for chunkSize in "${chunkSizeArr[@]}"; do
                 		averages=$(execute "$matrix" "$threads" "$mode" "$chunkSize" 1)
-                		echo "$matrix | $threads | $mode | $chunkSize | $averages" >> "$outputFile"
+                		echo "$matrix,$threads,$mode,$chunkSize,$averages" >> "$outputFile"
             		done
         	done
     	done
