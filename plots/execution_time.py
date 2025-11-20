@@ -22,8 +22,8 @@ mode_labels = {
 }
 df['mode_label'] = df['mode'].map(mode_labels)
 
-# Sort data for nicer lines
-df = df.sort_values(['matrix', 'mode', 'threads'])
+# Get the min value for the different chunk sizes
+df = df.groupby(['matrix', 'threads_str', 'mode_label'], as_index=False)['time'].min()
 
 # Define colors for each mode
 mode_colors = {
