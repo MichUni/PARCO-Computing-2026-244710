@@ -15,7 +15,7 @@ module load perf || { echo "module load perf failed"; exit 1; }
 
 cd "$PBS_O_WORKDIR"
 
-g++ -std=c++11 ./project/main.cpp ./project/matrix.cpp -fopenmp -o ./project/matrixProduct 
+g++ -std=c++11 ./src/main.cpp ./src/matrix.cpp -fopenmp -o ./src/matrixProduct 
 
 # matrices array
 matricesArr=(0 1 2 3 4)
@@ -33,14 +33,12 @@ chunkSizeArr=(1 10 100 1000)
 outputFile="results/perfResults.csv"
 echo "matrix | threads | mode | chunkSize | cycles | instructions | cache-references | cache-misses | LLC-loads | LLC-load-misses" > "$outputFile"
 
-PERF_EVENTS="cycles,instructions,cache-references,cache-misses,LLC-loads,LLC-load-misses"
-
 execute() {
     	args=("$@")
     	runs=5
     
     	local output
-    	output=$(perf stat -r $runs -e cycles,instructions,cache-misses,cache-references,LLC-load-misses -- ./project/matrixProduct "${args[@]}" 2>&1 >/dev/null)
+    	output=$(perf stat -r $runs -e cycles,instructions,cache-references,cache-misses,LLC-loads,LLC-load-misses -- ./src/matrixProduct "${args[@]}" 2>&1 >/dev/null)
 
     	local cycles=$(echo "$output" | grep "cycles" | awk '{print $1}' | sed 's/,//g')
     	local instructions=$(echo "$output" | grep "instructions" | awk '{print $1}' | sed 's/,//g')

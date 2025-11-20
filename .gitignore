@@ -1,2 +1,4 @@
 matrices/matrix*
-project/matrices
+src/*.gch
+src/CMakeLists.txt
+src/.idea

@@ -8,12 +8,12 @@
 #PBS -l walltime=06:00:00
 #PBS -l select=1:ncpus=64:mem=32gb
 
-module load gcc91
+module load gcc91 || { echo "module load gcc91 failed"; exit 1; }
 alias g++=g++-9.1.0
 
 cd "$PBS_O_WORKDIR"
 
-g++ -std=c++11 ./project/main.cpp ./project/matrix.cpp -fopenmp -o ./project/matrixProduct 
+g++ -std=c++11 ./src/main.cpp ./src/matrix.cpp -fopenmp -o ./src/matrixProduct 
 
 # matrices array
 matricesArr=(0 1 2 3 4)
@@ -33,7 +33,7 @@ echo "matrix | threads | mode | chunkSize | time" > "$outputFile"
 
 # c++ function
 execute() {
-	mapfile -t results < <(./project/matrixProduct "$@")
+	mapfile -t results < <(./src/matrixProduct "$@")
 	sortedResults=($(printf "%s\n" "${results[@]}" | sort -n))
 
 	output="${sortedResults[8]}"

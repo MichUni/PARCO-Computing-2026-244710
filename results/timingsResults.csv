@@ -1,370 +1,366 @@
-matrix 0
-sequential: 0.0447569 seconds
-2 threads | 0 mode | 1 chunkSize: 0.0218379 seconds
-2 threads | 0 mode | 10 chunkSize: 0.021199 seconds
-2 threads | 0 mode | 100 chunkSize: 0.018739 seconds
-2 threads | 0 mode | 1000 chunkSize: 0.0185521 seconds
-2 threads | 1 mode | 1 chunkSize: 0.0519831 seconds
-2 threads | 1 mode | 10 chunkSize: 0.0206392 seconds
-2 threads | 1 mode | 100 chunkSize: 0.0181739 seconds
-2 threads | 1 mode | 1000 chunkSize: 0.018223 seconds
-2 threads | 2 mode | 1 chunkSize: 0.0519671 seconds
-2 threads | 2 mode | 10 chunkSize: 0.0183311 seconds
-2 threads | 2 mode | 100 chunkSize: 0.0178571 seconds
-2 threads | 2 mode | 1000 chunkSize: 0.0182459 seconds
-4 threads | 0 mode | 1 chunkSize: 0.018178 seconds
-4 threads | 0 mode | 10 chunkSize: 0.011044 seconds
-4 threads | 0 mode | 100 chunkSize: 0.0102141 seconds
-4 threads | 0 mode | 1000 chunkSize: 0.00989199 seconds
-4 threads | 1 mode | 1 chunkSize: 0.03896 seconds
-4 threads | 1 mode | 10 chunkSize: 0.0107169 seconds
-4 threads | 1 mode | 100 chunkSize: 0.0219481 seconds
-4 threads | 1 mode | 1000 chunkSize: 0.00967598 seconds
-4 threads | 2 mode | 1 chunkSize: 0.0259891 seconds
-4 threads | 2 mode | 10 chunkSize: 0.0259812 seconds
-4 threads | 2 mode | 100 chunkSize: 0.010155 seconds
-4 threads | 2 mode | 1000 chunkSize: 0.0247979 seconds
-8 threads | 0 mode | 1 chunkSize: 0.029886 seconds
-8 threads | 0 mode | 10 chunkSize: 0.0068841 seconds
-8 threads | 0 mode | 100 chunkSize: 0.00575018 seconds
-8 threads | 0 mode | 1000 chunkSize: 0.00804496 seconds
-8 threads | 1 mode | 1 chunkSize: 0.0389891 seconds
-8 threads | 1 mode | 10 chunkSize: 0.0257471 seconds
-8 threads | 1 mode | 100 chunkSize: 0.00567508 seconds
-8 threads | 1 mode | 1000 chunkSize: 0.00576901 seconds
-8 threads | 2 mode | 1 chunkSize: 0.0397611 seconds
-8 threads | 2 mode | 10 chunkSize: 0.025985 seconds
-8 threads | 2 mode | 100 chunkSize: 0.00574994 seconds
-8 threads | 2 mode | 1000 chunkSize: 0.0259962 seconds
-16 threads | 0 mode | 1 chunkSize: 0.0290949 seconds
-16 threads | 0 mode | 10 chunkSize: 0.0265901 seconds
-16 threads | 0 mode | 100 chunkSize: 0.00455093 seconds
-16 threads | 0 mode | 1000 chunkSize: 0.043817 seconds
-16 threads | 1 mode | 1 chunkSize: 0.0509741 seconds
-16 threads | 1 mode | 10 chunkSize: 0.020767 seconds
-16 threads | 1 mode | 100 chunkSize: 0.028374 seconds
-16 threads | 1 mode | 1000 chunkSize: 0.00480914 seconds
-16 threads | 2 mode | 1 chunkSize: 0.00601006 seconds
-16 threads | 2 mode | 10 chunkSize: 0.0267091 seconds
-16 threads | 2 mode | 100 chunkSize: 0.054981 seconds
-16 threads | 2 mode | 1000 chunkSize: 0.026737 seconds
-32 threads | 0 mode | 1 chunkSize: 0.030098 seconds
-32 threads | 0 mode | 10 chunkSize: 0.029664 seconds
-32 threads | 0 mode | 100 chunkSize: 0.0618169 seconds
-32 threads | 0 mode | 1000 chunkSize: 0.073209 seconds
-32 threads | 1 mode | 1 chunkSize: 0.051182 seconds
-32 threads | 1 mode | 10 chunkSize: 0.026741 seconds
-32 threads | 1 mode | 100 chunkSize: 0.00587797 seconds
-32 threads | 1 mode | 1000 chunkSize: 0.00580192 seconds
-32 threads | 2 mode | 1 chunkSize: 0.0120192 seconds
-32 threads | 2 mode | 10 chunkSize: 0.0294039 seconds
-32 threads | 2 mode | 100 chunkSize: 0.025984 seconds
-32 threads | 2 mode | 1000 chunkSize: 0.0259809 seconds
-64 threads | 0 mode | 1 chunkSize: 0.0264928 seconds
-64 threads | 0 mode | 10 chunkSize: 0.0795228 seconds
-64 threads | 0 mode | 100 chunkSize: 0.0728021 seconds
-64 threads | 0 mode | 1000 chunkSize: 0.0739501 seconds
-64 threads | 1 mode | 1 chunkSize: 0.05496 seconds
-64 threads | 1 mode | 10 chunkSize: 0.0472078 seconds
-64 threads | 1 mode | 100 chunkSize: 0.0392618 seconds
-64 threads | 1 mode | 1000 chunkSize: 0.038672 seconds
-64 threads | 2 mode | 1 chunkSize: 0.041837 seconds
-64 threads | 2 mode | 10 chunkSize: 0.0549228 seconds
-64 threads | 2 mode | 100 chunkSize: 0.0601411 seconds
-64 threads | 2 mode | 1000 chunkSize: 0.0388551 seconds
-matrix 1
-sequential: 0.0230479 seconds
-2 threads | 0 mode | 1 chunkSize: 0.00925088 seconds
-2 threads | 0 mode | 10 chunkSize: 0.00865006 seconds
-2 threads | 0 mode | 100 chunkSize: 0.0259721 seconds
-2 threads | 0 mode | 1000 chunkSize: 0.00904202 seconds
-2 threads | 1 mode | 1 chunkSize: 0.051825 seconds
-2 threads | 1 mode | 10 chunkSize: 0.00933599 seconds
-2 threads | 1 mode | 100 chunkSize: 0.00884604 seconds
-2 threads | 1 mode | 1000 chunkSize: 0.00913 seconds
-2 threads | 2 mode | 1 chunkSize: 0.00880313 seconds
-2 threads | 2 mode | 10 chunkSize: 0.027775 seconds
-2 threads | 2 mode | 100 chunkSize: 0.00859904 seconds
-2 threads | 2 mode | 1000 chunkSize: 0.00929499 seconds
-4 threads | 0 mode | 1 chunkSize: 0.00478387 seconds
-4 threads | 0 mode | 10 chunkSize: 0.00472593 seconds
-4 threads | 0 mode | 100 chunkSize: 0.00514388 seconds
-4 threads | 0 mode | 1000 chunkSize: 0.00508595 seconds
-4 threads | 1 mode | 1 chunkSize: 0.0259941 seconds
-4 threads | 1 mode | 10 chunkSize: 0.00445294 seconds
-4 threads | 1 mode | 100 chunkSize: 0.00471401 seconds
-4 threads | 1 mode | 1000 chunkSize: 0.00540709 seconds
-4 threads | 2 mode | 1 chunkSize: 0.00515509 seconds
-4 threads | 2 mode | 10 chunkSize: 0.032871 seconds
-4 threads | 2 mode | 100 chunkSize: 0.00419283 seconds
-4 threads | 2 mode | 1000 chunkSize: 0.00510406 seconds
-8 threads | 0 mode | 1 chunkSize: 0.00264311 seconds
-8 threads | 0 mode | 10 chunkSize: 0.00237083 seconds
-8 threads | 0 mode | 100 chunkSize: 0.00234509 seconds
-8 threads | 0 mode | 1000 chunkSize: 0.00318313 seconds
-8 threads | 1 mode | 1 chunkSize: 0.00448012 seconds
-8 threads | 1 mode | 10 chunkSize: 0.00254798 seconds
-8 threads | 1 mode | 100 chunkSize: 0.00237703 seconds
-8 threads | 1 mode | 1000 chunkSize: 0.0100131 seconds
-8 threads | 2 mode | 1 chunkSize: 0.00226212 seconds
-8 threads | 2 mode | 10 chunkSize: 0.00230289 seconds
-8 threads | 2 mode | 100 chunkSize: 0.00231099 seconds
-8 threads | 2 mode | 1000 chunkSize: 0.00554109 seconds
-16 threads | 0 mode | 1 chunkSize: 0.00159001 seconds
-16 threads | 0 mode | 10 chunkSize: 0.0241339 seconds
-16 threads | 0 mode | 100 chunkSize: 0.00140905 seconds
-16 threads | 0 mode | 1000 chunkSize: 0.00220704 seconds
-16 threads | 1 mode | 1 chunkSize: 0.00348401 seconds
-16 threads | 1 mode | 10 chunkSize: 0.00182915 seconds
-16 threads | 1 mode | 100 chunkSize: 0.0259931 seconds
-16 threads | 1 mode | 1000 chunkSize: 0.00218701 seconds
-16 threads | 2 mode | 1 chunkSize: 0.0259941 seconds
-16 threads | 2 mode | 10 chunkSize: 0.00192118 seconds
-16 threads | 2 mode | 100 chunkSize: 0.00765896 seconds
-16 threads | 2 mode | 1000 chunkSize: 0.00252104 seconds
-32 threads | 0 mode | 1 chunkSize: 0.02613 seconds
-32 threads | 0 mode | 10 chunkSize: 0.0286798 seconds
-32 threads | 0 mode | 100 chunkSize: 0.026165 seconds
-32 threads | 0 mode | 1000 chunkSize: 0.0258591 seconds
-32 threads | 1 mode | 1 chunkSize: 0.00311184 seconds
-32 threads | 1 mode | 10 chunkSize: 0.015687 seconds
-32 threads | 1 mode | 100 chunkSize: 0.0258369 seconds
-32 threads | 1 mode | 1000 chunkSize: 0.0362122 seconds
-32 threads | 2 mode | 1 chunkSize: 0.00996304 seconds
-32 threads | 2 mode | 10 chunkSize: 0.0259931 seconds
-32 threads | 2 mode | 100 chunkSize: 0.011658 seconds
-32 threads | 2 mode | 1000 chunkSize: 0.023 seconds
-64 threads | 0 mode | 1 chunkSize: 0.0307651 seconds
-64 threads | 0 mode | 10 chunkSize: 0.038475 seconds
-64 threads | 0 mode | 100 chunkSize: 0.032469 seconds
-64 threads | 0 mode | 1000 chunkSize: 0.027791 seconds
-64 threads | 1 mode | 1 chunkSize: 0.00804687 seconds
-64 threads | 1 mode | 10 chunkSize: 0.0271289 seconds
-64 threads | 1 mode | 100 chunkSize: 0.0449929 seconds
-64 threads | 1 mode | 1000 chunkSize: 0.0262668 seconds
-64 threads | 2 mode | 1 chunkSize: 0.044986 seconds
-64 threads | 2 mode | 10 chunkSize: 0.027967 seconds
-64 threads | 2 mode | 100 chunkSize: 0.030581 seconds
-64 threads | 2 mode | 1000 chunkSize: 0.0474 seconds
-matrix 2
-sequential: 0.0102201 seconds
-2 threads | 0 mode | 1 chunkSize: 0.00423288 seconds
-2 threads | 0 mode | 10 chunkSize: 0.00411201 seconds
-2 threads | 0 mode | 100 chunkSize: 0.0149581 seconds
-2 threads | 0 mode | 1000 chunkSize: 0.00426316 seconds
-2 threads | 1 mode | 1 chunkSize: 0.00557685 seconds
-2 threads | 1 mode | 10 chunkSize: 0.00439692 seconds
-2 threads | 1 mode | 100 chunkSize: 0.00390697 seconds
-2 threads | 1 mode | 1000 chunkSize: 0.00408006 seconds
-2 threads | 2 mode | 1 chunkSize: 0.00492001 seconds
-2 threads | 2 mode | 10 chunkSize: 0.00490499 seconds
-2 threads | 2 mode | 100 chunkSize: 0.00500298 seconds
-2 threads | 2 mode | 1000 chunkSize: 0.0142291 seconds
-4 threads | 0 mode | 1 chunkSize: 0.00232506 seconds
-4 threads | 0 mode | 10 chunkSize: 0.00209904 seconds
-4 threads | 0 mode | 100 chunkSize: 0.0022521 seconds
-4 threads | 0 mode | 1000 chunkSize: 0.00336981 seconds
-4 threads | 1 mode | 1 chunkSize: 0.00332499 seconds
-4 threads | 1 mode | 10 chunkSize: 0.00230503 seconds
-4 threads | 1 mode | 100 chunkSize: 0.00206709 seconds
-4 threads | 1 mode | 1000 chunkSize: 0.00233722 seconds
-4 threads | 2 mode | 1 chunkSize: 0.00232792 seconds
-4 threads | 2 mode | 10 chunkSize: 0.00240803 seconds
-4 threads | 2 mode | 100 chunkSize: 0.010169 seconds
-4 threads | 2 mode | 1000 chunkSize: 0.00235605 seconds
-8 threads | 0 mode | 1 chunkSize: 0.00143695 seconds
-8 threads | 0 mode | 10 chunkSize: 0.00131798 seconds
-8 threads | 0 mode | 100 chunkSize: 0.00135899 seconds
-8 threads | 0 mode | 1000 chunkSize: 0.00169802 seconds
-8 threads | 1 mode | 1 chunkSize: 0.025588 seconds
-8 threads | 1 mode | 10 chunkSize: 0.00141788 seconds
-8 threads | 1 mode | 100 chunkSize: 0.0140119 seconds
-8 threads | 1 mode | 1000 chunkSize: 0.0015111 seconds
-8 threads | 2 mode | 1 chunkSize: 0.00155091 seconds
-8 threads | 2 mode | 10 chunkSize: 0.00186515 seconds
-8 threads | 2 mode | 100 chunkSize: 0.00138307 seconds
-8 threads | 2 mode | 1000 chunkSize: 0.00141382 seconds
-16 threads | 0 mode | 1 chunkSize: 0.0013411 seconds
-16 threads | 0 mode | 10 chunkSize: 0.000776052 seconds
-16 threads | 0 mode | 100 chunkSize: 0.0259938 seconds
-16 threads | 0 mode | 1000 chunkSize: 0.000957966 seconds
-16 threads | 1 mode | 1 chunkSize: 0.00372791 seconds
-16 threads | 1 mode | 10 chunkSize: 0.000983 seconds
-16 threads | 1 mode | 100 chunkSize: 0.00855589 seconds
-16 threads | 1 mode | 1000 chunkSize: 0.000765085 seconds
-16 threads | 2 mode | 1 chunkSize: 0.000929117 seconds
-16 threads | 2 mode | 10 chunkSize: 0.00122309 seconds
-16 threads | 2 mode | 100 chunkSize: 0.0158989 seconds
-16 threads | 2 mode | 1000 chunkSize: 0.00117707 seconds
-32 threads | 0 mode | 1 chunkSize: 0.0258079 seconds
-32 threads | 0 mode | 10 chunkSize: 0.000479937 seconds
-32 threads | 0 mode | 100 chunkSize: 0.026377 seconds
-32 threads | 0 mode | 1000 chunkSize: 0.025995 seconds
-32 threads | 1 mode | 1 chunkSize: 0.018899 seconds
-32 threads | 1 mode | 10 chunkSize: 0.025882 seconds
-32 threads | 1 mode | 100 chunkSize: 0.0127721 seconds
-32 threads | 1 mode | 1000 chunkSize: 0.0258749 seconds
-32 threads | 2 mode | 1 chunkSize: 0.00678301 seconds
-32 threads | 2 mode | 10 chunkSize: 0.00119901 seconds
-32 threads | 2 mode | 100 chunkSize: 0.00127101 seconds
-32 threads | 2 mode | 1000 chunkSize: 0.025636 seconds
-64 threads | 0 mode | 1 chunkSize: 0.0469339 seconds
-64 threads | 0 mode | 10 chunkSize: 0.0362058 seconds
-64 threads | 0 mode | 100 chunkSize: 0.070076 seconds
-64 threads | 0 mode | 1000 chunkSize: 0.025995 seconds
-64 threads | 1 mode | 1 chunkSize: 0.032918 seconds
-64 threads | 1 mode | 10 chunkSize: 0.027869 seconds
-64 threads | 1 mode | 100 chunkSize: 0.00286102 seconds
-64 threads | 1 mode | 1000 chunkSize: 0.0289981 seconds
-64 threads | 2 mode | 1 chunkSize: 0.00161099 seconds
-64 threads | 2 mode | 10 chunkSize: 0.0330229 seconds
-64 threads | 2 mode | 100 chunkSize: 0.000611067 seconds
-64 threads | 2 mode | 1000 chunkSize: 0.000999928 seconds
-matrix 3
-sequential: 0.00588489 seconds
-2 threads | 0 mode | 1 chunkSize: 0.0028739 seconds
-2 threads | 0 mode | 10 chunkSize: 0.0257881 seconds
-2 threads | 0 mode | 100 chunkSize: 0.00230503 seconds
-2 threads | 0 mode | 1000 chunkSize: 0.00236487 seconds
-2 threads | 1 mode | 1 chunkSize: 0.00345087 seconds
-2 threads | 1 mode | 10 chunkSize: 0.0024519 seconds
-2 threads | 1 mode | 100 chunkSize: 0.00232887 seconds
-2 threads | 1 mode | 1000 chunkSize: 0.00234509 seconds
-2 threads | 2 mode | 1 chunkSize: 0.00234509 seconds
-2 threads | 2 mode | 10 chunkSize: 0.00235796 seconds
-2 threads | 2 mode | 100 chunkSize: 0.00233984 seconds
-2 threads | 2 mode | 1000 chunkSize: 0.00237799 seconds
-4 threads | 0 mode | 1 chunkSize: 0.0275669 seconds
-4 threads | 0 mode | 10 chunkSize: 0.00133896 seconds
-4 threads | 0 mode | 100 chunkSize: 0.00125909 seconds
-4 threads | 0 mode | 1000 chunkSize: 0.00128198 seconds
-4 threads | 1 mode | 1 chunkSize: 0.00390792 seconds
-4 threads | 1 mode | 10 chunkSize: 0.00148606 seconds
-4 threads | 1 mode | 100 chunkSize: 0.00129604 seconds
-4 threads | 1 mode | 1000 chunkSize: 0.00142908 seconds
-4 threads | 2 mode | 1 chunkSize: 0.00228906 seconds
-4 threads | 2 mode | 10 chunkSize: 0.00122094 seconds
-4 threads | 2 mode | 100 chunkSize: 0.00136709 seconds
-4 threads | 2 mode | 1000 chunkSize: 0.0130661 seconds
-8 threads | 0 mode | 1 chunkSize: 0.00109696 seconds
-8 threads | 0 mode | 10 chunkSize: 0.000742912 seconds
-8 threads | 0 mode | 100 chunkSize: 0.00127602 seconds
-8 threads | 0 mode | 1000 chunkSize: 0.00079298 seconds
-8 threads | 1 mode | 1 chunkSize: 0.00269794 seconds
-8 threads | 1 mode | 10 chunkSize: 0.0219102 seconds
-8 threads | 1 mode | 100 chunkSize: 0.000770092 seconds
-8 threads | 1 mode | 1000 chunkSize: 0.000872135 seconds
-8 threads | 2 mode | 1 chunkSize: 0.000691175 seconds
-8 threads | 2 mode | 10 chunkSize: 0.000695944 seconds
-8 threads | 2 mode | 100 chunkSize: 0.000687122 seconds
-8 threads | 2 mode | 1000 chunkSize: 0.000825167 seconds
-16 threads | 0 mode | 1 chunkSize: 0.000612974 seconds
-16 threads | 0 mode | 10 chunkSize: 0.025871 seconds
-16 threads | 0 mode | 100 chunkSize: 0.000441074 seconds
-16 threads | 0 mode | 1000 chunkSize: 0.025893 seconds
-16 threads | 1 mode | 1 chunkSize: 0.00297499 seconds
-16 threads | 1 mode | 10 chunkSize: 0.000627041 seconds
-16 threads | 1 mode | 100 chunkSize: 0.000456095 seconds
-16 threads | 1 mode | 1000 chunkSize: 0.000526905 seconds
-16 threads | 2 mode | 1 chunkSize: 0.0209069 seconds
-16 threads | 2 mode | 10 chunkSize: 0.000478983 seconds
-16 threads | 2 mode | 100 chunkSize: 0.00724912 seconds
-16 threads | 2 mode | 1000 chunkSize: 0.000556946 seconds
-32 threads | 0 mode | 1 chunkSize: 0.026006 seconds
-32 threads | 0 mode | 10 chunkSize: 0.0258112 seconds
-32 threads | 0 mode | 100 chunkSize: 0.000288963 seconds
-32 threads | 0 mode | 1000 chunkSize: 0.0261469 seconds
-32 threads | 1 mode | 1 chunkSize: 0.032985 seconds
-32 threads | 1 mode | 10 chunkSize: 0.0258801 seconds
-32 threads | 1 mode | 100 chunkSize: 0.0258989 seconds
-32 threads | 1 mode | 1000 chunkSize: 0.025996 seconds
-32 threads | 2 mode | 1 chunkSize: 0.025882 seconds
-32 threads | 2 mode | 10 chunkSize: 0.0259972 seconds
-32 threads | 2 mode | 100 chunkSize: 0.000484943 seconds
-32 threads | 2 mode | 1000 chunkSize: 0.0240219 seconds
-64 threads | 0 mode | 1 chunkSize: 0.000353813 seconds
-64 threads | 0 mode | 10 chunkSize: 0.0270009 seconds
-64 threads | 0 mode | 100 chunkSize: 0.0259991 seconds
-64 threads | 0 mode | 1000 chunkSize: 0.0259981 seconds
-64 threads | 1 mode | 1 chunkSize: 0.0271151 seconds
-64 threads | 1 mode | 10 chunkSize: 0.025964 seconds
-64 threads | 1 mode | 100 chunkSize: 0.0269871 seconds
-64 threads | 1 mode | 1000 chunkSize: 0.0416281 seconds
-64 threads | 2 mode | 1 chunkSize: 0.03321 seconds
-64 threads | 2 mode | 10 chunkSize: 0.026999 seconds
-64 threads | 2 mode | 100 chunkSize: 0.0668769 seconds
-64 threads | 2 mode | 1000 chunkSize: 0.000519991 seconds
-matrix 4
-sequential: 0.00374508 seconds
-2 threads | 0 mode | 1 chunkSize: 0.00295615 seconds
-2 threads | 0 mode | 10 chunkSize: 0.00220895 seconds
-2 threads | 0 mode | 100 chunkSize: 0.00199509 seconds
-2 threads | 0 mode | 1000 chunkSize: 0.0250928 seconds
-2 threads | 1 mode | 1 chunkSize: 0.00819016 seconds
-2 threads | 1 mode | 10 chunkSize: 0.00440788 seconds
-2 threads | 1 mode | 100 chunkSize: 0.00537014 seconds
-2 threads | 1 mode | 1000 chunkSize: 0.00208807 seconds
-2 threads | 2 mode | 1 chunkSize: 0.0021739 seconds
-2 threads | 2 mode | 10 chunkSize: 0.00210404 seconds
-2 threads | 2 mode | 100 chunkSize: 0.00207996 seconds
-2 threads | 2 mode | 1000 chunkSize: 0.00208187 seconds
-4 threads | 0 mode | 1 chunkSize: 0.00184894 seconds
-4 threads | 0 mode | 10 chunkSize: 0.00304699 seconds
-4 threads | 0 mode | 100 chunkSize: 0.00197196 seconds
-4 threads | 0 mode | 1000 chunkSize: 0.0014441 seconds
-4 threads | 1 mode | 1 chunkSize: 0.0137632 seconds
-4 threads | 1 mode | 10 chunkSize: 0.00812101 seconds
-4 threads | 1 mode | 100 chunkSize: 0.00151014 seconds
-4 threads | 1 mode | 1000 chunkSize: 0.00144315 seconds
-4 threads | 2 mode | 1 chunkSize: 0.00152588 seconds
-4 threads | 2 mode | 10 chunkSize: 0.00167704 seconds
-4 threads | 2 mode | 100 chunkSize: 0.00152516 seconds
-4 threads | 2 mode | 1000 chunkSize: 0.00167012 seconds
-8 threads | 0 mode | 1 chunkSize: 0.027283 seconds
-8 threads | 0 mode | 10 chunkSize: 0.00125313 seconds
-8 threads | 0 mode | 100 chunkSize: 0.00117898 seconds
-8 threads | 0 mode | 1000 chunkSize: 0.00116801 seconds
-8 threads | 1 mode | 1 chunkSize: 0.0139191 seconds
-8 threads | 1 mode | 10 chunkSize: 0.00262809 seconds
-8 threads | 1 mode | 100 chunkSize: 0.00121713 seconds
-8 threads | 1 mode | 1000 chunkSize: 0.00106311 seconds
-8 threads | 2 mode | 1 chunkSize: 0.00131893 seconds
-8 threads | 2 mode | 10 chunkSize: 0.00295091 seconds
-8 threads | 2 mode | 100 chunkSize: 0.00142193 seconds
-8 threads | 2 mode | 1000 chunkSize: 0.00223517 seconds
-16 threads | 0 mode | 1 chunkSize: 0.00130606 seconds
-16 threads | 0 mode | 10 chunkSize: 0.00886512 seconds
-16 threads | 0 mode | 100 chunkSize: 0.00147486 seconds
-16 threads | 0 mode | 1000 chunkSize: 0.00099802 seconds
-16 threads | 1 mode | 1 chunkSize: 0.0152068 seconds
-16 threads | 1 mode | 10 chunkSize: 0.0118001 seconds
-16 threads | 1 mode | 100 chunkSize: 0.00212693 seconds
-16 threads | 1 mode | 1000 chunkSize: 0.000952959 seconds
-16 threads | 2 mode | 1 chunkSize: 0.00109601 seconds
-16 threads | 2 mode | 10 chunkSize: 0.0259809 seconds
-16 threads | 2 mode | 100 chunkSize: 0.021935 seconds
-16 threads | 2 mode | 1000 chunkSize: 0.00185609 seconds
-32 threads | 0 mode | 1 chunkSize: 0.00299382 seconds
-32 threads | 0 mode | 10 chunkSize: 0.0257061 seconds
-32 threads | 0 mode | 100 chunkSize: 0.00687408 seconds
-32 threads | 0 mode | 1000 chunkSize: 0.0258322 seconds
-32 threads | 1 mode | 1 chunkSize: 0.0348458 seconds
-32 threads | 1 mode | 10 chunkSize: 0.02599 seconds
-32 threads | 1 mode | 100 chunkSize: 0.016917 seconds
-32 threads | 1 mode | 1000 chunkSize: 0.026623 seconds
-32 threads | 2 mode | 1 chunkSize: 0.0259969 seconds
-32 threads | 2 mode | 10 chunkSize: 0.0104101 seconds
-32 threads | 2 mode | 100 chunkSize: 0.02088 seconds
-32 threads | 2 mode | 1000 chunkSize: 0.0260029 seconds
-64 threads | 0 mode | 1 chunkSize: 0.036422 seconds
-64 threads | 0 mode | 10 chunkSize: 0.037986 seconds
-64 threads | 0 mode | 100 chunkSize: 0.0279579 seconds
-64 threads | 0 mode | 1000 chunkSize: 0.00092411 seconds
-64 threads | 1 mode | 1 chunkSize: 0.0802391 seconds
-64 threads | 1 mode | 10 chunkSize: 0.0273061 seconds
-64 threads | 1 mode | 100 chunkSize: 0.0481069 seconds
-64 threads | 1 mode | 1000 chunkSize: 0.0260019 seconds
-64 threads | 2 mode | 1 chunkSize: 0.00114298 seconds
-64 threads | 2 mode | 10 chunkSize: 0.029053 seconds
-64 threads | 2 mode | 100 chunkSize: 0.027514 seconds
-64 threads | 2 mode | 1000 chunkSize: 0.0265779 seconds
+matrix | threads | mode | chunkSize | time
+0 | 1 | -1 | -1 | 0.0407882
+0 | 2 | 0 | 1 | 0.0197101
+0 | 2 | 0 | 10 | 0.01757
+0 | 2 | 0 | 100 | 0.0164859
+0 | 2 | 0 | 1000 | 0.016237
+0 | 2 | 1 | 1 | 0.026921
+0 | 2 | 1 | 10 | 0.0184629
+0 | 2 | 1 | 100 | 0.0164928
+0 | 2 | 1 | 1000 | 0.016253
+0 | 2 | 2 | 1 | 0.016166
+0 | 2 | 2 | 10 | 0.0166309
+0 | 2 | 2 | 100 | 0.016242
+0 | 2 | 2 | 1000 | 0.0163939
+0 | 4 | 0 | 1 | 0.017061
+0 | 4 | 0 | 10 | 0.0114381
+0 | 4 | 0 | 100 | 0.00956511
+0 | 4 | 0 | 1000 | 0.00894904
+0 | 4 | 1 | 1 | 0.03284
+0 | 4 | 1 | 10 | 0.012727
+0 | 4 | 1 | 100 | 0.00932312
+0 | 4 | 1 | 1000 | 0.00891995
+0 | 4 | 2 | 1 | 0.00882196
+0 | 4 | 2 | 10 | 0.00877786
+0 | 4 | 2 | 100 | 0.00880599
+0 | 4 | 2 | 1000 | 0.00885892
+0 | 8 | 0 | 1 | 0.012774
+0 | 8 | 0 | 10 | 0.00662303
+0 | 8 | 0 | 100 | 0.00527787
+0 | 8 | 0 | 1000 | 0.00503707
+0 | 8 | 1 | 1 | 0.030354
+0 | 8 | 1 | 10 | 0.00739884
+0 | 8 | 1 | 100 | 0.00533509
+0 | 8 | 1 | 1000 | 0.00505495
+0 | 8 | 2 | 1 | 0.005023
+0 | 8 | 2 | 10 | 0.00500202
+0 | 8 | 2 | 100 | 0.00493407
+0 | 8 | 2 | 1000 | 0.00509095
+0 | 16 | 0 | 1 | 0.00952816
+0 | 16 | 0 | 10 | 0.00401998
+0 | 16 | 0 | 100 | 0.00348997
+0 | 16 | 0 | 1000 | 0.00314307
+0 | 16 | 1 | 1 | 0.024003
+0 | 16 | 1 | 10 | 0.00464606
+0 | 16 | 1 | 100 | 0.00326991
+0 | 16 | 1 | 1000 | 0.00351
+0 | 16 | 2 | 1 | 0.00333405
+0 | 16 | 2 | 10 | 0.00333309
+0 | 16 | 2 | 100 | 0.00332904
+0 | 16 | 2 | 1000 | 0.00311112
+0 | 32 | 0 | 1 | 0.00556612
+0 | 32 | 0 | 10 | 0.00352597
+0 | 32 | 0 | 100 | 0.0026629
+0 | 32 | 0 | 1000 | 0.002671
+0 | 32 | 1 | 1 | 0.020695
+0 | 32 | 1 | 10 | 0.00466108
+0 | 32 | 1 | 100 | 0.0124602
+0 | 32 | 1 | 1000 | 0.00368381
+0 | 32 | 2 | 1 | 0.00332904
+0 | 32 | 2 | 10 | 0.00233698
+0 | 32 | 2 | 100 | 0.00295496
+0 | 32 | 2 | 1000 | 0.00254893
+0 | 64 | 0 | 1 | 0.0133591
+0 | 64 | 0 | 10 | 0.0164289
+0 | 64 | 0 | 100 | 0.011029
+0 | 64 | 0 | 1000 | 0.0119579
+0 | 64 | 1 | 1 | 0.028625
+0 | 64 | 1 | 10 | 0.015578
+0 | 64 | 1 | 100 | 0.037261
+0 | 64 | 1 | 1000 | 0.0336978
+0 | 64 | 2 | 1 | 0.0280211
+0 | 64 | 2 | 10 | 0.0111361
+0 | 64 | 2 | 100 | 0.0359011
+0 | 64 | 2 | 1000 | 0.0293891
+1 | 1 | -1 | -1 | 0.0209901
+1 | 2 | 0 | 1 | 0.00851798
+1 | 2 | 0 | 10 | 0.0079
+1 | 2 | 0 | 100 | 0.00790405
+1 | 2 | 0 | 1000 | 0.00818992
+1 | 2 | 1 | 1 | 0.009305
+1 | 2 | 1 | 10 | 0.00798512
+1 | 2 | 1 | 100 | 0.0079
+1 | 2 | 1 | 1000 | 0.00824809
+1 | 2 | 2 | 1 | 0.00779819
+1 | 2 | 2 | 10 | 0.00780416
+1 | 2 | 2 | 100 | 0.00780678
+1 | 2 | 2 | 1000 | 0.00828195
+1 | 4 | 0 | 1 | 0.00529504
+1 | 4 | 0 | 10 | 0.0044179
+1 | 4 | 0 | 100 | 0.00446391
+1 | 4 | 0 | 1000 | 0.00489593
+1 | 4 | 1 | 1 | 0.00696397
+1 | 4 | 1 | 10 | 0.00445914
+1 | 4 | 1 | 100 | 0.004143
+1 | 4 | 1 | 1000 | 0.00481009
+1 | 4 | 2 | 1 | 0.00409603
+1 | 4 | 2 | 10 | 0.00408387
+1 | 4 | 2 | 100 | 0.00423193
+1 | 4 | 2 | 1000 | 0.00495911
+1 | 8 | 0 | 1 | 0.00283217
+1 | 8 | 0 | 10 | 0.00229192
+1 | 8 | 0 | 100 | 0.00225902
+1 | 8 | 0 | 1000 | 0.00307798
+1 | 8 | 1 | 1 | 0.00451183
+1 | 8 | 1 | 10 | 0.00242496
+1 | 8 | 1 | 100 | 0.00232983
+1 | 8 | 1 | 1000 | 0.00304818
+1 | 8 | 2 | 1 | 0.00223613
+1 | 8 | 2 | 10 | 0.00223899
+1 | 8 | 2 | 100 | 0.00218582
+1 | 8 | 2 | 1000 | 0.00260115
+1 | 16 | 0 | 1 | 0.0016439
+1 | 16 | 0 | 10 | 0.001266
+1 | 16 | 0 | 100 | 0.00131798
+1 | 16 | 0 | 1000 | 0.00206494
+1 | 16 | 1 | 1 | 0.00310993
+1 | 16 | 1 | 10 | 0.001508
+1 | 16 | 1 | 100 | 0.00140882
+1 | 16 | 1 | 1000 | 0.00246501
+1 | 16 | 2 | 1 | 0.0013051
+1 | 16 | 2 | 10 | 0.00135899
+1 | 16 | 2 | 100 | 0.00146317
+1 | 16 | 2 | 1000 | 0.00228715
+1 | 32 | 0 | 1 | 0.00167799
+1 | 32 | 0 | 10 | 0.000767946
+1 | 32 | 0 | 100 | 0.0007689
+1 | 32 | 0 | 1000 | 0.00210118
+1 | 32 | 1 | 1 | 0.00278401
+1 | 32 | 1 | 10 | 0.00132012
+1 | 32 | 1 | 100 | 0.00118899
+1 | 32 | 1 | 1000 | 0.00244713
+1 | 32 | 2 | 1 | 0.00127411
+1 | 32 | 2 | 10 | 0.00124216
+1 | 32 | 2 | 100 | 0.00228095
+1 | 32 | 2 | 1000 | 0.00227594
+1 | 64 | 0 | 1 | 0.00797701
+1 | 64 | 0 | 10 | 0.000981092
+1 | 64 | 0 | 100 | 0.0101252
+1 | 64 | 0 | 1000 | 0.0115569
+1 | 64 | 1 | 1 | 0.012059
+1 | 64 | 1 | 10 | 0.023787
+1 | 64 | 1 | 100 | 0.016988
+1 | 64 | 1 | 1000 | 0.0094769
+1 | 64 | 2 | 1 | 0.020066
+1 | 64 | 2 | 10 | 0.0110362
+1 | 64 | 2 | 100 | 0.0173252
+1 | 64 | 2 | 1000 | 0.00947094
+2 | 1 | -1 | -1 | 0.00924921
+2 | 2 | 0 | 1 | 0.0039289
+2 | 2 | 0 | 10 | 0.00364304
+2 | 2 | 0 | 100 | 0.00372291
+2 | 2 | 0 | 1000 | 0.00376296
+2 | 2 | 1 | 1 | 0.00497794
+2 | 2 | 1 | 10 | 0.00366902
+2 | 2 | 1 | 100 | 0.0035398
+2 | 2 | 1 | 1000 | 0.00360608
+2 | 2 | 2 | 1 | 0.004493
+2 | 2 | 2 | 10 | 0.00449896
+2 | 2 | 2 | 100 | 0.004493
+2 | 2 | 2 | 1000 | 0.00450897
+2 | 4 | 0 | 1 | 0.00263214
+2 | 4 | 0 | 10 | 0.00216198
+2 | 4 | 0 | 100 | 0.00211096
+2 | 4 | 0 | 1000 | 0.00213885
+2 | 4 | 1 | 1 | 0.00498581
+2 | 4 | 1 | 10 | 0.00218582
+2 | 4 | 1 | 100 | 0.00192618
+2 | 4 | 1 | 1000 | 0.00209594
+2 | 4 | 2 | 1 | 0.00219893
+2 | 4 | 2 | 10 | 0.00226498
+2 | 4 | 2 | 100 | 0.00218987
+2 | 4 | 2 | 1000 | 0.00215602
+2 | 8 | 0 | 1 | 0.00148988
+2 | 8 | 0 | 10 | 0.00118089
+2 | 8 | 0 | 100 | 0.0012269
+2 | 8 | 0 | 1000 | 0.00132585
+2 | 8 | 1 | 1 | 0.00388718
+2 | 8 | 1 | 10 | 0.00131083
+2 | 8 | 1 | 100 | 0.00109887
+2 | 8 | 1 | 1000 | 0.00111008
+2 | 8 | 2 | 1 | 0.00128007
+2 | 8 | 2 | 10 | 0.00127006
+2 | 8 | 2 | 100 | 0.001266
+2 | 8 | 2 | 1000 | 0.00122595
+2 | 16 | 0 | 1 | 0.000891924
+2 | 16 | 0 | 10 | 0.000756025
+2 | 16 | 0 | 100 | 0.000782013
+2 | 16 | 0 | 1000 | 0.000876904
+2 | 16 | 1 | 1 | 0.00332189
+2 | 16 | 1 | 10 | 0.000853062
+2 | 16 | 1 | 100 | 0.000735998
+2 | 16 | 1 | 1000 | 0.000751019
+2 | 16 | 2 | 1 | 0.000882149
+2 | 16 | 2 | 10 | 0.000873089
+2 | 16 | 2 | 100 | 0.000830889
+2 | 16 | 2 | 1000 | 0.000874996
+2 | 32 | 0 | 1 | 0.000616074
+2 | 32 | 0 | 10 | 0.00049305
+2 | 32 | 0 | 100 | 0.000589132
+2 | 32 | 0 | 1000 | 0.000642061
+2 | 32 | 1 | 1 | 0.00287104
+2 | 32 | 1 | 10 | 0.000735044
+2 | 32 | 1 | 100 | 0.000637054
+2 | 32 | 1 | 1000 | 0.000799894
+2 | 32 | 2 | 1 | 0.000789881
+2 | 32 | 2 | 10 | 0.000723124
+2 | 32 | 2 | 100 | 0.000818968
+2 | 32 | 2 | 1000 | 0.000810146
+2 | 64 | 0 | 1 | 0.00538611
+2 | 64 | 0 | 10 | 0.00986004
+2 | 64 | 0 | 100 | 0.00988293
+2 | 64 | 0 | 1000 | 0.00956607
+2 | 64 | 1 | 1 | 0.00670695
+2 | 64 | 1 | 10 | 0.00941992
+2 | 64 | 1 | 100 | 0.0124311
+2 | 64 | 1 | 1000 | 0.0094521
+2 | 64 | 2 | 1 | 0.0012641
+2 | 64 | 2 | 10 | 0.0101919
+2 | 64 | 2 | 100 | 0.0100529
+2 | 64 | 2 | 1000 | 0.00935793
+3 | 1 | -1 | -1 | 0.00533891
+3 | 2 | 0 | 1 | 0.00254011
+3 | 2 | 0 | 10 | 0.00220799
+3 | 2 | 0 | 100 | 0.00211906
+3 | 2 | 0 | 1000 | 0.00216007
+3 | 2 | 1 | 1 | 0.00317907
+3 | 2 | 1 | 10 | 0.00228024
+3 | 2 | 1 | 100 | 0.00215483
+3 | 2 | 1 | 1000 | 0.00213313
+3 | 2 | 2 | 1 | 0.00208998
+3 | 2 | 2 | 10 | 0.00208783
+3 | 2 | 2 | 100 | 0.00208211
+3 | 2 | 2 | 1000 | 0.00208282
+3 | 4 | 0 | 1 | 0.00177407
+3 | 4 | 0 | 10 | 0.00131202
+3 | 4 | 0 | 100 | 0.00116897
+3 | 4 | 0 | 1000 | 0.00116301
+3 | 4 | 1 | 1 | 0.00345993
+3 | 4 | 1 | 10 | 0.00149107
+3 | 4 | 1 | 100 | 0.00118589
+3 | 4 | 1 | 1000 | 0.00117183
+3 | 4 | 2 | 1 | 0.00114512
+3 | 4 | 2 | 10 | 0.00113201
+3 | 4 | 2 | 100 | 0.00116801
+3 | 4 | 2 | 1000 | 0.00117707
+3 | 8 | 0 | 1 | 0.00170898
+3 | 8 | 0 | 10 | 0.000755072
+3 | 8 | 0 | 100 | 0.000669956
+3 | 8 | 0 | 1000 | 0.000703096
+3 | 8 | 1 | 1 | 0.00321102
+3 | 8 | 1 | 10 | 0.000852108
+3 | 8 | 1 | 100 | 0.000666142
+3 | 8 | 1 | 1000 | 0.000712156
+3 | 8 | 2 | 1 | 0.000665903
+3 | 8 | 2 | 10 | 0.000669956
+3 | 8 | 2 | 100 | 0.000663042
+3 | 8 | 2 | 1000 | 0.00072813
+3 | 16 | 0 | 1 | 0.000895977
+3 | 16 | 0 | 10 | 0.000443935
+3 | 16 | 0 | 100 | 0.000411034
+3 | 16 | 0 | 1000 | 0.000445843
+3 | 16 | 1 | 1 | 0.00269389
+3 | 16 | 1 | 10 | 0.000529051
+3 | 16 | 1 | 100 | 0.000449896
+3 | 16 | 1 | 1000 | 0.000500917
+3 | 16 | 2 | 1 | 0.000407934
+3 | 16 | 2 | 10 | 0.00041914
+3 | 16 | 2 | 100 | 0.000516176
+3 | 16 | 2 | 1000 | 0.000494003
+3 | 32 | 0 | 1 | 0.000553846
+3 | 32 | 0 | 10 | 0.000327826
+3 | 32 | 0 | 100 | 0.00030303
+3 | 32 | 0 | 1000 | 0.00040102
+3 | 32 | 1 | 1 | 0.00214887
+3 | 32 | 1 | 10 | 0.000432968
+3 | 32 | 1 | 100 | 0.000432014
+3 | 32 | 1 | 1000 | 0.000542164
+3 | 32 | 2 | 1 | 0.0004282
+3 | 32 | 2 | 10 | 0.000428915
+3 | 32 | 2 | 100 | 0.000437975
+3 | 32 | 2 | 1000 | 0.00049305
+3 | 64 | 0 | 1 | 0.00998306
+3 | 64 | 0 | 10 | 0.000429869
+3 | 64 | 0 | 100 | 0.00969601
+3 | 64 | 0 | 1000 | 0.00930595
+3 | 64 | 1 | 1 | 0.010818
+3 | 64 | 1 | 10 | 0.00179887
+3 | 64 | 1 | 100 | 0.0111969
+3 | 64 | 1 | 1000 | 0.000479221
+3 | 64 | 2 | 1 | 0.0102081
+3 | 64 | 2 | 10 | 0.010217
+3 | 64 | 2 | 100 | 0.0108061
+3 | 64 | 2 | 1000 | 0.00947499
+4 | 1 | -1 | -1 | 0.00330091
+4 | 2 | 0 | 1 | 0.00263906
+4 | 2 | 0 | 10 | 0.00191617
+4 | 2 | 0 | 100 | 0.00179482
+4 | 2 | 0 | 1000 | 0.00171995
+4 | 2 | 1 | 1 | 0.00824308
+4 | 2 | 1 | 10 | 0.0024159
+4 | 2 | 1 | 100 | 0.00186181
+4 | 2 | 1 | 1000 | 0.00172496
+4 | 2 | 2 | 1 | 0.00184894
+4 | 2 | 2 | 10 | 0.00183201
+4 | 2 | 2 | 100 | 0.00185299
+4 | 2 | 2 | 1000 | 0.00183392
+4 | 4 | 0 | 1 | 0.0020771
+4 | 4 | 0 | 10 | 0.00181699
+4 | 4 | 0 | 100 | 0.00145912
+4 | 4 | 0 | 1000 | 0.00125694
+4 | 4 | 1 | 1 | 0.016068
+4 | 4 | 1 | 10 | 0.00296211
+4 | 4 | 1 | 100 | 0.00150299
+4 | 4 | 1 | 1000 | 0.00125909
+4 | 4 | 2 | 1 | 0.00144005
+4 | 4 | 2 | 10 | 0.001513
+4 | 4 | 2 | 100 | 0.00153708
+4 | 4 | 2 | 1000 | 0.00146103
+4 | 8 | 0 | 1 | 0.00145292
+4 | 8 | 0 | 10 | 0.00146985
+4 | 8 | 0 | 100 | 0.00111794
+4 | 8 | 0 | 1000 | 0.000998974
+4 | 8 | 1 | 1 | 0.0156748
+4 | 8 | 1 | 10 | 0.00258803
+4 | 8 | 1 | 100 | 0.00108886
+4 | 8 | 1 | 1000 | 0.00100803
+4 | 8 | 2 | 1 | 0.00118017
+4 | 8 | 2 | 10 | 0.00116897
+4 | 8 | 2 | 100 | 0.00138712
+4 | 8 | 2 | 1000 | 0.00121593
+4 | 16 | 0 | 1 | 0.0011909
+4 | 16 | 0 | 10 | 0.00122714
+4 | 16 | 0 | 100 | 0.000888824
+4 | 16 | 0 | 1000 | 0.000848055
+4 | 16 | 1 | 1 | 0.0122931
+4 | 16 | 1 | 10 | 0.00212407
+4 | 16 | 1 | 100 | 0.000913143
+4 | 16 | 1 | 1000 | 0.000825882
+4 | 16 | 2 | 1 | 0.000998974
+4 | 16 | 2 | 10 | 0.000991106
+4 | 16 | 2 | 100 | 0.000974894
+4 | 16 | 2 | 1000 | 0.000963926
+4 | 32 | 0 | 1 | 0.00106311
+4 | 32 | 0 | 10 | 0.000967979
+4 | 32 | 0 | 100 | 0.000795126
+4 | 32 | 0 | 1000 | 0.00084281
+4 | 32 | 1 | 1 | 0.011596
+4 | 32 | 1 | 10 | 0.00194788
+4 | 32 | 1 | 100 | 0.000898838
+4 | 32 | 1 | 1000 | 0.000884056
+4 | 32 | 2 | 1 | 0.000868082
+4 | 32 | 2 | 10 | 0.000936031
+4 | 32 | 2 | 100 | 0.000945091
+4 | 32 | 2 | 1000 | 0.000947952
+4 | 64 | 0 | 1 | 0.010061
+4 | 64 | 0 | 10 | 0.00971699
+4 | 64 | 0 | 100 | 0.0139
+4 | 64 | 0 | 1000 | 0.010474
+4 | 64 | 1 | 1 | 0.016983
+4 | 64 | 1 | 10 | 0.010402
+4 | 64 | 1 | 100 | 0.00950503
+4 | 64 | 1 | 1000 | 0.0103378
+4 | 64 | 2 | 1 | 0.00522113
+4 | 64 | 2 | 10 | 0.0100231
+4 | 64 | 2 | 100 | 0.00137186
+4 | 64 | 2 | 1000 | 0.00824881
