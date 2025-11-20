@@ -29,7 +29,7 @@ chunkSizeArr=(1 10 100 1000)
 
 # open output file and clear it
 outputFile="results/timingsResults.csv"
-echo "matrix | threads | mode | chunkSize | time" > "$outputFile"
+echo "matrix,threads,mode,chunkSize,time" > "$outputFile"
 
 # c++ function
 execute() {
@@ -45,14 +45,14 @@ for matrix in "${matricesArr[@]}"; do
 	for threads in "${threadsArr[@]}"; do
 		if [ "$threads" -eq 1 ]; then
 			time=$(execute "$matrix" "$threads" 10)
-			echo "$matrix | $threads | -1 | -1 | $time" >> "$outputFile"
+			echo "$matrix,$threads,-1,-1,$time" >> "$outputFile"
 			continue
 		fi
  
 		for mode in "${modeArr[@]}"; do
 			for chunkSize in "${chunkSizeArr[@]}"; do
 				time=$(execute "$matrix" "$threads" "$mode" "$chunkSize" 10)
-				echo "$matrix | $threads | $mode | $chunkSize | $time" >> "$outputFile"
+				echo "$matrix,$threads,$mode,$chunkSize,$time" >> "$outputFile"
 			done
 		done
 	done

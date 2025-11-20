@@ -1,4 +1,0 @@
-./project/matrix.cpp: In constructor ‘matrix::matrix(std::string)’:
-./project/matrix.cpp:97:17: error: ‘resultArray’ was not declared in this scope
-     std::fill_n(resultArray, numRows, 0);
-                 ^

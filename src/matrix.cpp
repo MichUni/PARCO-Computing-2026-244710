@@ -108,7 +108,10 @@ matrix::~matrix() {
 
 void matrix::sequentialProduct() {
 	for(int i = 0;i < numRows;i++) {
-        for(int j = aRows[i];j < aRows[i + 1];j++) {
+        int startIndex = aRows[i];
+        int endIndex = aRows[i + 1];
+        
+        for(int j = startIndex;j < endIndex;j++) {
             resultArr[i] += values[j] * productArr[aCols[j]];
         }
     }
@@ -118,11 +121,12 @@ void matrix::parallelProduct(int numOfThreads) {
     #pragma omp parallel for schedule(runtime) num_threads(numOfThreads)
         for(int i = 0;i < numRows;i++) {
             double sum = 0;
+            
+            int startIndex = aRows[i];
+            int endIndex = aRows[i + 1];
 
-            for(int j = aRows[i];j < aRows[i + 1];j++) {
+            for(int j = startIndex;j < endIndex;j++) {
                 sum += values[j] * productArr[aCols[j]];
             }
-
-            resultArr[i] = sum;
         }
 }

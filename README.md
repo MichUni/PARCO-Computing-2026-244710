@@ -4,3 +4,5 @@
 matrices must be added in the **deliverable/matrices** directory, the matrices must me named **matrix<id>.txt**
 
 https://drive.google.com/drive/folders/1nl7Y6W9WeGmjKlK-g7qocmWW5aihjrA1?usp=sharing
+
+py -m pip install pandas seaborn matplotlib
