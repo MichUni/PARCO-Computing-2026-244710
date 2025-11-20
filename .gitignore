@@ -2,3 +2,5 @@ matrices/matrix*
 src/*.gch
 src/CMakeLists.txt
 src/.idea
+results/*.err
+results/*.out
