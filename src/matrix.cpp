@@ -94,7 +94,7 @@ matrix::matrix(std::string fileName) {
         productArr[i] = rand();
         
     resultArr = new double[numRows];
-    std::fill_n(resultArray, numRows, 0);
+    std::fill_n(resultArr, numRows, 0);
 }
 
 matrix::~matrix() {
