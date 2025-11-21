@@ -1,6 +1,5 @@
-matrices/matrix*
+matrices/*
+!matrices/.gitkeep
 src/*.gch
-src/CMakeLists.txt
-src/.idea
 results/*.err
 results/*.out

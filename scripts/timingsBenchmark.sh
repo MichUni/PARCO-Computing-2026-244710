@@ -1,16 +1,6 @@
 #!/bin/bash
-#PBS -N timingsBenchmark
 
-#PBS -o results/timingsBenchmark.out
-#PBS -e results/timingsBenchmark.err
-
-#PBS -q short_cpuQ
-#PBS -l walltime=06:00:00
-#PBS -l select=1:ncpus=64:mem=32gb
-
-module load gcc91 || { echo "module load gcc91 failed"; exit 1; }
-
-cd "$PBS_O_WORKDIR"
+cd "$(dirname "$0")/.."
 
 g++ -std=c++11 ./src/main.cpp ./src/matrix.cpp -fopenmp -o ./src/matrixProduct 
 
