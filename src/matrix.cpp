@@ -128,5 +128,7 @@ void matrix::parallelProduct(int numOfThreads) {
             for(int j = startIndex;j < endIndex;j++) {
                 sum += values[j] * productArr[aCols[j]];
             }
+            
+            resultArr[i] = sum;
         }
 }
