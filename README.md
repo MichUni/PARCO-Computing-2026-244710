@@ -49,10 +49,10 @@ The benchmark is executed on five different matrices, downloaded from the [Suit 
 - **`python3` and its libraries: `pandas`, `seaborn`, `matplotlib`**
 > Don't know if you have them? Open your `terminal` and run these commands:
 > ```
-> python3 --version
-> python3 -c "import pandas as pd; print(pd.__version__)"
-> python3 -c "import seaborn as sns; print(sns.__version__)"
-> python3 -c "import matplotlib; print(matplotlib.__version__)"
+> python --version
+> python -c "import pandas as pd; print(pd.__version__)"
+> python -c "import seaborn as sns; print(sns.__version__)"
+> python -c "import matplotlib; print(matplotlib.__version__)"
 > ```
 > if you get `command not found` or similar errors you may need to install them before making any plot
 
@@ -63,9 +63,7 @@ Download the repository directly from [github](https://github.com/MichUni/PARCO-
 ```
 git clone https://github.com/MichUni/PARCO-Computing-2026-244710/
 ```
-In you cloned the repository then you have to download the `matrices/` folder manually from [github](https://github.com/MichUni/PARCO-Computing-2026-244710/tree/main)
-or
-download the zip file from [google drive](https://drive.google.com/drive/folders/1nl7Y6W9WeGmjKlK-g7qocmWW5aihjrA1?usp=sharing) and unzip it into the cloned folder
+In you cloned the repository then you have to download the `matrices/` zipped folder manually from [google drive](https://drive.google.com/drive/folders/1nl7Y6W9WeGmjKlK-g7qocmWW5aihjrA1?usp=sharing) and unzip it into the cloned folder or you can download them from the `📑 Matrices` section above, but in this case you have to rename them to `matrix0.mtx`, `matrix1.mtx`, `matrix2.mtx`, `matrix3.mtx` and `matrix4.mtx`.
 ###### make sure that the `matrices/` folder location corresponds to the project structure saw above
 
 2. #### EXECUTION
