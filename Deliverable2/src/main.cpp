@@ -1,5 +1,4 @@
 #include <iostream>
-#include <omp.h>
 
 #include "matrix.h"
 #include "timer.h"
@@ -8,88 +7,137 @@ int main(int argc, char *argv[]) {
     srand(time(NULL));
 
     int matrixId;
-    int numOfThreads;
     int mode;
-    int chunkSize;
-    int numOfRuns;
+	
+	MPI_Init(&argc, &argv);
 
-    if(argc == 4) {
-        matrixId = atoi(argv[1]);
-        numOfThreads = atoi(argv[2]);
-
-        if(numOfThreads != 1) {
-            std::cerr << "wrong number of threads" << std::endl;
-            return 1;
-        }
-
-        numOfRuns = atoi(argv[3]);
-
-        if(numOfRuns < 1) {
-            std::cerr << "wrong number of runs" << std::endl;
-            return 1;
-        }
-    } else if(argc == 6) {
-        matrixId = atoi(argv[1]);
-        numOfThreads = atoi(argv[2]);
-
-        if(numOfThreads <= 1) {
-            std::cerr << "wrong number of threads" << std::endl;
-            return 1;
-        }
-
-        mode = atoi(argv[3]);
-
-        if(mode < 0 || mode > 2) {
-            std::cerr << "wrong mode" << std::endl;
-            return 1;
-        }
-
-        chunkSize = atoi(argv[4]);
-
-        if(chunkSize < 1) {
-            std::cerr << "wrong chunk size" << std::endl;
-            return 1;
-        }
-
-        numOfRuns = atoi(argv[5]);
-
-        if(numOfRuns < 1) {
-            std::cerr << "wrong number of runs" << std::endl;
-            return 1;
-        }
-
-        switch(mode) {
-            case 0:
-                omp_set_schedule(omp_sched_static, chunkSize);
-                break;
-            case 1:
-                omp_set_schedule(omp_sched_dynamic, chunkSize);
-                break;
-            case 2:
-                omp_set_schedule(omp_sched_guided, chunkSize);
-                break;
-        }
-    } else {
-        std::cerr << "wrong number of arguments" << std::endl;
-        std::cerr << argc << " | " << argv[1] << " | " << argv[2] << std::endl;
+    int rank, size;
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &size);
+    
+    if(argc != 3) {
+    	if(rank == 0)
+        	std::cerr << "wrong number of arguments" << std::endl;
+			
+		MPI_Finalize();
         return 1;
     }
+    
+    int numRows, numCols, numValues;
+    int* rows;
+    int* cols;
+    double* values;
 
-    matrix m("matrices/matrix" + std::to_string(matrixId) + ".mtx");
+	if(rank == 0) {
+		std::ifstream file("matrices/matrix" + std::to_string(matrixId) + ".mtx");
 
-    for(int i = 0;i < numOfRuns;i++) {
-        double start, finish;
+	    if(!file.is_open()) {
+	        std::cerr << "Error: could not open file " << fileName << std::endl;
+	        MPI_Abort(MPI_COMM_WORLD, -1);
+	    }
+	    
+	    while(file.peek() == '%')
+        	file.ignore(2048, '\n');
 
-        GET_TIME(start);
-        if(numOfThreads == 1)
-            m.sequentialProduct();
-        else
-            m.parallelProduct(numOfThreads);
-        GET_TIME(finish);
-
-        double time = finish - start;
-        std::cout << time << std::endl;
-    }
+    	file >> numRows >> numCols >> numValues;
+    	
+    	rows = new int[numValues];
+    	cols = new int[numValues];
+    	values = new double[numValues];
+    	
+    	for(int i = 0;i < numValues;i++)
+            file >> rows[i] >> cols[i] >> values[i];
+            
+        file.close();
+	}
+	
+	MPI_Bcast(&numRows, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&numCols, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Bcast(&numValues, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    
+    int* numValuesProcess = new int[size];
+    std::fill_n(numValuesProcess, size, 0);
+    
+    if(rank == 0)
+    	for(int i = 0;i < numValues;i++)
+    		numValuesProcess[rows[i] % size]++;
+    		
+    int localNumValues = 0;
+    MPI_Scatter(numValuesProcess, 1, MPI_INT, &localNumValues, 1, MPI_INT, 0, MPI_COMM_WORLD);
+    
+	int* localRows = new int[localNumValues];
+	int* localCols = new int[localNumValues];
+	double* localValues = new double[localNumValues];
+	
+	if(rank == 0) {
+		int* tempLocalIndex = new int[size - 1];
+    	std::fill_n(tempLocalIndex, size - 1, 0);
+    
+    	int** tempLocalRows = new int*[size - 1];
+    	int** tempLocalCols = new int*[size - 1];
+    	double** tempLocalValues = new double*[size - 1];
+    	
+    	for(int i = 0;i < size - 1;i++) {
+    		int tempNumValues = numValuesProcess[i + 1];
+    		tempLocalRows[i] = new int[tempNumValues];
+    		tempLocalCols[i] = new int[tempNumValues];
+    		tempLocalValues[i] = new double[tempNumValues];
+		}
+		
+		int myIndex = 0;
+    	
+		for(int i = 0;i < numValues;i++) {
+			int owner = (rows[i] % size) - 1;
+			
+			if(owner == -1) {
+				localRows[myIndex] = rows[i] / size;
+				localCols[myIndex] = cols[i];
+				localValues[myIndex] = values[i];
+				myIndex++;
+				
+				continue;
+			}
+			
+			int tempIndex = tempLocalIndex[owner]++;
+			tempLocalRows[owner][tempIndex] = rows[i] / size;
+			tempLocalCols[owner][tempIndex] = cols[i];
+			tempLocalValues[owner][tempIndex] = values[i];
+		}
+		
+		for(int i = 0;i < size - 1;i++) {
+			MPI_Send(tempLocalRows[i], numValuesProcess[i + 1], MPI_INT, i + 1, 0, MPI_COMM_WORLD);
+			MPI_Send(tempLocalCols[i], numValuesProcess[i + 1], MPI_INT, i + 1, 1, MPI_COMM_WORLD);
+			MPI_Send(tempLocalValues[i], numValuesProcess[i + 1], MPI_DOUBLE, i + 1, 2, MPI_COMM_WORLD);
+		}
+		
+		delete[] tempLocalIndex;
+		
+		for(int i = 0; i < size - 1; i++) {
+		    delete[] tempLocalRows[i];
+		    delete[] tempLocalCols[i];
+		    delete[] tempLocalValues[i];
+		}
+		
+		delete[] tempLocalRows;
+		delete[] tempLocalCols;
+		delete[] tempLocalValues;
+	} else {
+		MPI_Recv(localRows, localNumValues, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+	    MPI_Recv(localCols, localNumValues, MPI_INT, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+	    MPI_Recv(localValues, localNumValues, MPI_DOUBLE, 0, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+	}
+	
+	if(rank == 0) {
+		delete[] rows;
+		delete[] cols;
+		delete[] values;
+	}
+	
+	delete[] numValuesProcess;
+	
+	delete[] localRows;
+	delete[] localCols;
+	delete[] localValues;
     
     return 0;
 }

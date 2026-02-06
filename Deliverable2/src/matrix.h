@@ -5,20 +5,17 @@
 
 class matrix {
     int numRows;
-    int numCols;
+    int numNnz;
 
     int* aRows;
     int* aCols;
     double* values;
-
-    double* productArr;
-    double* resultArr;
 public:
-    matrix(const std::string fileName);
+    matrix(int localRows, int localNnz);
     ~matrix();
 
-    void sequentialProduct();
-    void parallelProduct(int numOfThreads);
+    void coo_to_csr(const std::vector<int>& rows, const std::vector<int>& cols, const std::vector<double>& vals);
+    void spmv(const double* x, double* y);
 };
 
 #endif
