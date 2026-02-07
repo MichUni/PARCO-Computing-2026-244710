@@ -13,7 +13,7 @@ module load mpich-3.2.1--gcc-9.1.0 || { echo "module load failed"; exit 1; }
 
 cd "$PBS_O_WORKDIR"
 
-mpicxx -O3 -Wall -ID2/include ./src/main.cpp ./src/matrix.cpp -o ./src/matrixProduct || { echo "Compilation failed"; exit 1; }
+mpicxx -O3 -Wall -ID2/include ./src/main.cpp ./src/matrix.cpp ./src/ghost_entries.cpp -o ./src/matrixProduct || { echo "Compilation failed"; exit 1; }
 chmod +x ./src/matrixProduct
 
 # matrices array

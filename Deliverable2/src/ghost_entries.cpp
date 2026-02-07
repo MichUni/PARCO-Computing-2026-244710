@@ -1,3 +1,8 @@
+#include "matrix.h"
+
+#include <mpi.h>
+#include <set>
+
 int identify_ghost_entries(const matrix &A, int* &ghost_entries, int size, int rank) {
 	std::set<int> ghost_set;
 	
