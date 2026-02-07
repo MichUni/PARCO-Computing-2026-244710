@@ -1,42 +1,46 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <mpi.h>
+#include <cstdlib>
+#include <ctime>
 
 #include "matrix.h"
 #include "timer.h"
 
+#define MAX_RAND 1000
+#define MIN_RAND -1000
+
 int main(int argc, char *argv[]) {
-    srand(time(NULL));
-
-    int matrixId;
-    int mode;
+  int matrixId;
 	
-	MPI_Init(&argc, &argv);
+  MPI_Init(&argc, &argv);
 
-    int rank, size;
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &size);
+  int rank, size;
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  MPI_Comm_size(MPI_COMM_WORLD, &size);
     
-    if(argc != 3) {
-    	if(rank == 0)
-        	std::cerr << "wrong number of arguments" << std::endl;
-			
-		MPI_Finalize();
-        return 1;
-    } else {
-    	if(rank == 0) {
-        	matrixId = atoi(argv[1]);
-        	mode = atoi(argv[2]);
-		}
-	}
-    
-    int numRows, numCols, numValues;
-    int* rows;
-    int* cols;
-    double* values;
+  if(argc != 2) {
+  	if(rank == 0) {
+      	std::cerr << "wrong number of arguments" << std::endl;
+      	for(int i = 0;i < argc;i++) {
+      		std::cerr << argv[i] << std::endl;
+		  }
+    }
+		
+    MPI_Finalize();
+    return 1;
+  } else if(rank == 0) {
+    matrixId = atoi(argv[1]);
+  }
+  
+  int numRows, numCols, numValues;
+  int* rows = nullptr;
+  int* cols = nullptr;
+  double* values = nullptr;
 
 	if(rank == 0) {
-		string fileName = "matrices/matrix" + std::to_string(matrixId) + ".mtx";
+		std::string fileName = "matrices/matrix" + std::to_string(matrixId) + ".mtx";
 		std::ifstream file(fileName);
 
 	    if(!file.is_open()) {
@@ -47,11 +51,18 @@ int main(int argc, char *argv[]) {
 	    while(file.peek() == '%')
         	file.ignore(2048, '\n');
 
+    	bool isSorted = file.peek() == '!';
+
+    	if(isSorted)
+        	file.ignore(2048, '\n');
+        	
     	file >> numRows >> numCols >> numValues;
     	
     	rows = new int[numValues];
     	cols = new int[numValues];
     	values = new double[numValues];
+    	
+    	std::cout << numValues << std::endl;
     	
     	for(int i = 0;i < numValues;i++) {
             file >> rows[i] >> cols[i] >> values[i];
@@ -139,13 +150,24 @@ int main(int argc, char *argv[]) {
 	}
 	
 	int localNumRows = numRows / size + (rank < (numRows % size) ? 1 : 0);
-	int localNumCol = numCols / size + (rank < (numCols % size) ? 1 : 0);
+	int localNumCols = numCols / size + (rank < (numCols % size) ? 1 : 0);
 	
 	matrix A(localNumRows, localNumValues);
+	A.coo_to_csr(localRows, localCols, localValues);
 	if(rank == 0)
 		A.print(localRows, localCols, localValues, rank);
+		
+	double* localProductArray = new double(localNumCols);
+	double* localResultArray = new double(localNumRows);	
 	
+  	srand(time(NULL) + rank);
+  	
+  	for(int i = 0;i < localNumCols) {
+  		localProductArray[i] = ((double)(rand() % (MAX_RAND - MIN_RAND + 1) + MIN_RAND) / 100.0;
+	}
 	
+	identify_ghost_entries();
+	exchange_ghost_entries();
 	
 	if(rank == 0) {
 		delete[] rows;
@@ -158,6 +180,9 @@ int main(int argc, char *argv[]) {
 	delete[] localRows;
 	delete[] localCols;
 	delete[] localValues;
+	
+	delete[] localProductArray;
+	delete[] localResultArray;
 	
 	MPI_Finalize();
     

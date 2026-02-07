@@ -9,14 +9,14 @@ class matrix {
 
     int* aRows;
     int* aCols;
-    double* values;
+    double* vals;
 public:
     matrix(int localRows, int localNnz);
     ~matrix();
 
     void coo_to_csr(int* rows, int* cols, double* values);
-    void print(int* rows, int* cols, double* values);
-    void spmv(const double* x, double* y);
+    void print(int* rows, int* cols, double* values, int rank);
+    void spmv(double* x, double* y);
 };
 
 #endif
