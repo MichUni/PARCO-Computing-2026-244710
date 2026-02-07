@@ -4,19 +4,19 @@
 #include <string>
 
 class matrix {
+public:
     int numRows;
     int numValues;
 
     int* aRows;
     int* aCols;
     double* vals;
-public:
+    
     matrix(int localRows, int localNnz);
     ~matrix();
 
     void coo_to_csr(int* rows, int* cols, double* values);
-    void print(int* rows, int* cols, double* values, int rank);
-    void spmv(double* x, double* y);
+    void spmv(const double* &localProductArray, int numGhostEntries, const int* &ghostColumns, const double* &ghostEntries, int size, int rank, double* resultArray);
 };
 
 #endif
