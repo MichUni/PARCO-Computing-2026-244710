@@ -20,7 +20,7 @@ chmod +x ./src/matrixProduct
 matricesArr=(0)
 
 # threads array
-threadsArr=(1 2 4)
+threadsArr=(1 2 4 8 16 32 64 128)
 
 # output CSV file
 outputFile="results/strongScalingResults.csv"
@@ -36,7 +36,7 @@ execute() {
 
 for matrix in "${matricesArr[@]}"; do
 	for threads in "${threadsArr[@]}"; do
-    result=$(execute "$matrix" "$threads")
-    echo "$matrix,$result" >> "$outputFile"
-  done
+    		result=$(execute "$matrix" "$threads")
+    		echo "$result" >> "$outputFile"
+	done
 done

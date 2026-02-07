@@ -72,8 +72,6 @@ int main(int argc, char *argv[]) {
     	cols = new int[numValues];
     	values = new double[numValues];
     	
-    	std::cout << numValues << std::endl;
-    	
     	for(int i = 0;i < numValues;i++) {
             file >> rows[i] >> cols[i] >> values[i];
             rows[i]--;
