@@ -5,7 +5,7 @@
 
 class matrix {
     int numRows;
-    int numNnz;
+    int numValues;
 
     int* aRows;
     int* aCols;
@@ -14,7 +14,8 @@ public:
     matrix(int localRows, int localNnz);
     ~matrix();
 
-    void coo_to_csr(const std::vector<int>& rows, const std::vector<int>& cols, const std::vector<double>& vals);
+    void coo_to_csr(int* rows, int* cols, double* values);
+    void print(int* rows, int* cols, double* values);
     void spmv(const double* x, double* y);
 };
 

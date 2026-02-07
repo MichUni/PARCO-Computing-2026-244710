@@ -1,15 +1,11 @@
 #include "matrix.h"
 
 #include <iostream>
-#include <string>
-#include <fstream>
-#include <vector>
-#include <algorithm>
 
-matrix::matrix(int localRows, int localNnz):numRows(localRows), nnz(localNnz) {
+matrix::matrix(int localNumRows, int localNumValues):numRows(localNumRows), numValues(localNumValues) {
     aRows = new int[numRows + 1];
-    aCols = new int[nnz];
-    values = new double[nnz];
+    aCols = new int[numValues];
+    values = new double[numValues];
 
     std::fill(aRows, aRows + numRows + 1, 0);
 }
@@ -20,29 +16,21 @@ matrix::~matrix() {
     delete[] values;
 }
 
-void matrix::coo_to_csr() {
-	for(int i = 0;i < numRows;i++) {
-        int startIndex = aRows[i];
-        int endIndex = aRows[i + 1];
-        
-        for(int j = startIndex;j < endIndex;j++) {
-            resultArr[i] += values[j] * productArr[aCols[j]];
-        }
-    }
+void matrix::coo_to_csr(int* rows, int* cols, double* values) {
+	for(int i = 0;i < numRows + 1;i++)
+		aRows[i]++;
+		
+	for(int i = 0;i < numRows;i++)
+		aRows[i + 1] += aRows[i];
 }
 
-void matrix::parallelProduct(int numOfThreads) {
-    #pragma omp parallel for schedule(runtime) num_threads(numOfThreads)
-        for(int i = 0;i < numRows;i++) {
-            double sum = 0;
-            
-            int startIndex = aRows[i];
-            int endIndex = aRows[i + 1];
+void matrix::print(int* rows, int* cols, double* values, int rank) {
+	std::cout << "Process " << rank << ":" << std::endl;
+	for(int i = 0;i < numRows + 1;i++)
+		std::cout << rows[i] << " ";
+		
+	std::cout << std::endl;	
+}
 
-            for(int j = startIndex;j < endIndex;j++) {
-                sum += values[j] * productArr[aCols[j]];
-            }
-            
-            resultArr[i] = sum;
-        }
+void matrix::spmv() {
 }
