@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <string>
 
 #include "matrix.h"
 #include "timer.h"
@@ -21,7 +23,12 @@ int main(int argc, char *argv[]) {
 			
 		MPI_Finalize();
         return 1;
-    }
+    } else {
+    	if(rank == 0) {
+        	matrixId = atoi(argv[1]);
+        	mode = atoi(argv[2]);
+		}
+	}
     
     int numRows, numCols, numValues;
     int* rows;
@@ -29,7 +36,8 @@ int main(int argc, char *argv[]) {
     double* values;
 
 	if(rank == 0) {
-		std::ifstream file("matrices/matrix" + std::to_string(matrixId) + ".mtx");
+		string fileName = "matrices/matrix" + std::to_string(matrixId) + ".mtx";
+		std::ifstream file(fileName);
 
 	    if(!file.is_open()) {
 	        std::cerr << "Error: could not open file " << fileName << std::endl;
@@ -45,8 +53,11 @@ int main(int argc, char *argv[]) {
     	cols = new int[numValues];
     	values = new double[numValues];
     	
-    	for(int i = 0;i < numValues;i++)
+    	for(int i = 0;i < numValues;i++) {
             file >> rows[i] >> cols[i] >> values[i];
+            rows[i]--;
+            cols[i]--;
+		}
             
         file.close();
 	}
@@ -87,9 +98,9 @@ int main(int argc, char *argv[]) {
 		int myIndex = 0;
     	
 		for(int i = 0;i < numValues;i++) {
-			int owner = (rows[i] % size) - 1;
+			int owner = rows[i] % size;
 			
-			if(owner == -1) {
+			if(owner == 0) {
 				localRows[myIndex] = rows[i] / size;
 				localCols[myIndex] = cols[i];
 				localValues[myIndex] = values[i];
@@ -98,10 +109,10 @@ int main(int argc, char *argv[]) {
 				continue;
 			}
 			
-			int tempIndex = tempLocalIndex[owner]++;
-			tempLocalRows[owner][tempIndex] = rows[i] / size;
-			tempLocalCols[owner][tempIndex] = cols[i];
-			tempLocalValues[owner][tempIndex] = values[i];
+			int tempIndex = tempLocalIndex[owner - 1]++;
+			tempLocalRows[owner - 1][tempIndex] = rows[i] / size;
+			tempLocalCols[owner - 1][tempIndex] = cols[i];
+			tempLocalValues[owner - 1][tempIndex] = values[i];
 		}
 		
 		for(int i = 0;i < size - 1;i++) {
@@ -127,6 +138,15 @@ int main(int argc, char *argv[]) {
 	    MPI_Recv(localValues, localNumValues, MPI_DOUBLE, 0, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 	}
 	
+	int localNumRows = numRows / size + (rank < (numRows % size) ? 1 : 0);
+	int localNumCol = numCols / size + (rank < (numCols % size) ? 1 : 0);
+	
+	matrix A(localNumRows, localNumValues);
+	if(rank == 0)
+		A.print(localRows, localCols, localValues, rank);
+	
+	
+	
 	if(rank == 0) {
 		delete[] rows;
 		delete[] cols;
@@ -138,6 +158,8 @@ int main(int argc, char *argv[]) {
 	delete[] localRows;
 	delete[] localCols;
 	delete[] localValues;
+	
+	MPI_Finalize();
     
     return 0;
 }

@@ -1,5 +1,0 @@
-matrices/*
-!matrices/.gitkeep
-src/*.gch
-results/*.err
-results/*.out
