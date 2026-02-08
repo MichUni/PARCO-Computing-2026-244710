@@ -1,5 +1,4 @@
-matrices/strongScaling/*
-matrices/weakScaling/*
+matrices/*
 src/*.gch
 results/*.err
 results/*.out
