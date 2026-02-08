@@ -189,7 +189,6 @@ int main(int argc, char *argv[]) {
 		A.spvm(localProductArray, numGhostEntries, ghostColumns, ghostEntries, size, rank, localResultArray);
 	}
 	
-	
 	MPI_Barrier(MPI_COMM_WORLD);
 	
 	int iterations = 10;
@@ -234,10 +233,10 @@ int main(int argc, char *argv[]) {
     MPI_Reduce(&localNumValues, &max_nz, 1, MPI_INT, MPI_MAX, 0, MPI_COMM_WORLD);
     
     int min_ge, max_ge;
-    long sum_ge;
+    int sum_ge;
     MPI_Reduce(&numGhostEntries, &min_ge, 1, MPI_INT, MPI_MIN, 0, MPI_COMM_WORLD);
     MPI_Reduce(&numGhostEntries, &max_ge, 1, MPI_INT, MPI_MAX, 0, MPI_COMM_WORLD);
-    MPI_Reduce(&numGhostEntries, &sum_ge, 1, MPI_LONG, MPI_SUM, 0, MPI_COMM_WORLD); 
+    MPI_Reduce(&numGhostEntries, &sum_ge, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD); 
 	
 	if(rank == 0) {
 		double gflops = (2.0 * numValues) / (p90_computation / 1000.0);

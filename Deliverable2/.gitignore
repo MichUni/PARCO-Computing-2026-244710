@@ -1,5 +1,5 @@
-matrices/*
-!matrices/.gitkeep
+matrices/strongScaling/*
+matrices/weakScaling/*
 src/*.gch
 results/*.err
 results/*.out
