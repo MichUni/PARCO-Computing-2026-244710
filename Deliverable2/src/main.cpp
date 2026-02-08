@@ -10,6 +10,8 @@
 #include "ghost_entries.h"
 #include "timer.h"
 
+#define ITERATIONS 11
+
 #define MAX_RAND 1000
 #define MIN_RAND -1000
 
@@ -22,7 +24,7 @@ int compareDoubles(const void* a, const void* b) {
 }
 
 int main(int argc, char *argv[]) {
-	int matrixId = -1;
+	std::string matrixName;
 	int rank, size;
 	
 	MPI_Init(&argc, &argv);
@@ -41,7 +43,7 @@ int main(int argc, char *argv[]) {
 		MPI_Finalize();
 		return 1;
 	} else if(rank == 0) {
-		matrixId = atoi(argv[1]);
+		matrixName = argv[1];
 	}
 	
 	int numRows, numCols, numValues;
@@ -50,7 +52,7 @@ int main(int argc, char *argv[]) {
 	double* values = nullptr;
 
 	if(rank == 0) {
-		std::string fileName = "matrices/matrix" + std::to_string(matrixId) + ".mtx";
+		std::string fileName = "matrices/matrix" + matrixName + ".mtx";
 		std::ifstream file(fileName);
 
 	    if(!file.is_open()) {
@@ -121,6 +123,7 @@ int main(int argc, char *argv[]) {
 			
 			if(owner == 0) {
 				localRows[myIndex] = rows[i] / size;
+				
 				localCols[myIndex] = cols[i];
 				localValues[myIndex] = values[i];
 				myIndex++;
@@ -174,8 +177,8 @@ int main(int argc, char *argv[]) {
 	
 	std::fill_n(localResultArray, localNumRows, 0);	
 	
-	GhostData gd;
-	identify_ghost_entries(A, gd, size, rank);
+	GhostData gd = {0};
+	identify_ghost_entries(A, gd, size, rank, numCols, MPI_COMM_WORLD);
 	int numGhostEntries = gd.numGhostEntries;
 	
 	exchange_ghost_entries(gd, localProductArray, MPI_COMM_WORLD);
@@ -190,14 +193,12 @@ int main(int argc, char *argv[]) {
 	
 	MPI_Barrier(MPI_COMM_WORLD);
 	
-	int iterations = 10;
-	
-	double* commutationTime = new double[iterations];
-	double* computationTime = new double[iterations];
+	double* commutationTime = new double[ITERATIONS];
+	double* computationTime = new double[ITERATIONS];
 	
 	double start, end;
 	
-	for(int i = 0;i < iterations;i++) {
+	for(int i = 0;i < ITERATIONS;i++) {
 		std::fill_n(localResultArray, localNumRows, 0);	
 		
 		GET_TIME(start);
@@ -213,10 +214,10 @@ int main(int argc, char *argv[]) {
 		computationTime[i] = (end - start) * 1000.0;
 	}
 	
-	qsort(commutationTime, iterations, sizeof(double), compareDoubles);
-	qsort(computationTime, iterations, sizeof(double), compareDoubles);
+	qsort(commutationTime, ITERATIONS, sizeof(double), compareDoubles);
+	qsort(computationTime, ITERATIONS, sizeof(double), compareDoubles);
 
-	int idx90 = (int)(iterations * 0.9);
+	int idx90 = (int)(ITERATIONS * 0.9);
 	double p90_commutation = commutationTime[idx90];
 	double p90_computation = computationTime[idx90];
 	
@@ -245,7 +246,7 @@ int main(int argc, char *argv[]) {
     	
     	double total_time = max_commutation + max_computation;
     	
-    	std::cout << matrixId << "," << size << "," << max_commutation << "," << max_computation << "," << total_time << "," << gflops << "," << min_nz << "," << max_nz << "," << avg_nz << "," << min_ge << "," << max_ge << "," << avg_ge << std::endl;
+    	std::cout << matrixName << "," << size << "," << max_commutation << "," << max_computation << "," << total_time << "," << gflops << "," << min_nz << "," << max_nz << "," << avg_nz << "," << min_ge << "," << max_ge << "," << avg_ge << std::endl;
     	
 		delete[] rows;
 		delete[] cols;
@@ -261,11 +262,10 @@ int main(int argc, char *argv[]) {
 	delete[] localProductArray;
 	delete[] localResultArray;
 	
-	delete[] ghostColumns;
-	delete[] ghostEntries;
-	
 	delete[] commutationTime;
 	delete[] computationTime;
+  
+  	free_data(gd);
 	
 	MPI_Finalize();
     

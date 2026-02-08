@@ -20,6 +20,10 @@ matrix::~matrix() {
 
 void matrix::coo_to_csr(int* rows, int* cols, double* values) {
 	for(int i = 0;i < numValues;i++) {
+		if(rows[i] < 0 || rows[i] > numRows) {
+            std::cerr << "error in rows number " << rows[i] << std::endl;
+        }
+        
 		aRows[rows[i] + 1]++;
 		aCols[i] = cols[i];
 		vals[i] = values[i];
@@ -29,7 +33,7 @@ void matrix::coo_to_csr(int* rows, int* cols, double* values) {
 		aRows[i + 1] += aRows[i];
 }
 
-void matrix::spvm(const double* localProductArray, int numGhostEntries, const int* ghostColumns, const double* ghostEntries, int size, int rank, double* resultArray) {
+void matrix::spvm(const double* localProductArray, int numGhostEntries, const int* columnToGhostIndex, const double* ghostVector, int size, int rank, double* resultArray) {
 	for(int i = 0;i < numRows;i++) {
         int startIndex = aRows[i];
         int endIndex = aRows[i + 1];
@@ -37,16 +41,15 @@ void matrix::spvm(const double* localProductArray, int numGhostEntries, const in
         for(int j = startIndex;j < endIndex;j++) {
         	int col = aCols[j];
         	
-        	if(col % size == 0) {
+        	if(col % size == rank) {
         		resultArray[i] += vals[j] * localProductArray[col / size];
 			} else {
-				for(int k = 0;k < numGhostEntries;k++) {
-					if(col != ghostColumns[k])
-						continue;
-						
-					resultArray[i] += vals[j] * ghostEntries[k];
-					break;
+				if(columnToGhostIndex[col] == -1) {
+					std::cerr << "error 1" << std::endl;
+					continue;
 				}
+				
+				resultArray[i] += vals[j] * ghostVector[columnToGhostIndex[col]];
 			}
         }
     }

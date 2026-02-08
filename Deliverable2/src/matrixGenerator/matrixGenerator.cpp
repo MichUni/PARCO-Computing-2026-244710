@@ -6,20 +6,10 @@
 #define ROWS_PER_PROCESS 256
 #define NNZ_PER_ROW 13
 
-int main(int argc, char* argv[]) {
-	std::ofstream outfile("matrices/temp.mtx");
-        outfile << "!sorted\n" << numRows << " " << numCols << " " << numValues << "\n";
+#define MAX_RAND 10000
+#define MIN_RAND -10000
 
-        for(int i = 0;i < numValues;i++) {
-            tuple t = tuples[i];
-            outfile << t.row << " " << t.col << " " << t.val << std::endl;
-        }
-
-        outfile.close();
-        std::remove(fileName.c_str());
-        std::rename("matrices/temp.mtx", fileName.c_str());
-        
-        
+int main(int argc, char* argv[]) {        
     if(argc != 2) {
         std::cerr << "wrong number of parameters" << std::endl;
         return 1;
@@ -32,7 +22,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    std::string filename = "matrices/wk-" + std::to_string(p) + ".mtx";
+    std::string filename = "matrices/matrix_wk" + std::to_string(p) + ".mtx";
     std::ofstream outfile(filename);
     
     if (!outfile) {
@@ -50,7 +40,10 @@ int main(int argc, char* argv[]) {
     outfile << rows << " " << cols << " " << nnz << "\n";
 
     for(int i = 0;i < rows;i++) {
-    	bool takenSpot[cols] = { 0 };
+    	bool takenSpot[cols];
+    	
+    	for(int j = 0;j < cols;j++)
+    		takenSpot[j] = false;
     	
     	for(int j = 0;j < NNZ_PER_ROW;j++) {
     		int col = rand() % cols;
@@ -58,12 +51,17 @@ int main(int argc, char* argv[]) {
     		if(!takenSpot[col]) {
     			takenSpot[col] = true;
     			
-    			double val = rand() % (MAX_RAND - MIN_RAND + 1)
+    			double val = ((double)(rand() % (MAX_RAND - MIN_RAND + 1))) / 1000.0;
+    			
+    			outfile << (i + 1) << " " << (col + 1) << " " << val << "\n";
+			} else {
+				j--;
 			}
 		}
     }
 
-    out.close();
+    outfile.close();
+    
     return 0;
 }
 

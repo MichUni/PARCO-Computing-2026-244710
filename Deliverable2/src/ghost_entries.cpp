@@ -1,8 +1,10 @@
 #include "matrix.h"
+#include "ghost_entries.h"
 #include <mpi.h>
 #include <set>
+#include <iostream>
 
-void identify_ghost_entries(const matrix &A, GhostData &ghostEntries, int size, int rank, MPI_Comm comm) {
+void identify_ghost_entries(const matrix &A, GhostData &ghostEntries, int size, int rank, int nCols, MPI_Comm comm) {
     ghostEntries.rank = rank;
     ghostEntries.size = size;
 
@@ -39,6 +41,21 @@ void identify_ghost_entries(const matrix &A, GhostData &ghostEntries, int size, 
         }
     }
 
+    ghostEntries.columnToGhostIndex = new int[nCols];
+    std::fill_n(ghostEntries.columnToGhostIndex, nCols, -1);
+    
+    int index = 0;
+    
+    for(int i = 0;i < size;i++) {
+    	for(int j = 0;j < ghostEntries.columnsNeededCount[i];j++) {
+    		int col = ghostEntries.columnsNeededFrom[i][j];
+    		
+    		ghostEntries.columnToGhostIndex[col] = index;
+    		
+    		index++;
+		}
+	}
+
     ghostEntries.columnsToSendCount = new int[size];
 
     MPI_Alltoall(ghostEntries.columnsNeededCount, 1, MPI_INT, ghostEntries.columnsToSendCount, 1, MPI_INT, comm);
@@ -54,22 +71,26 @@ void identify_ghost_entries(const matrix &A, GhostData &ghostEntries, int size, 
         rdispls[i] = rdispls[i - 1] + ghostEntries.columnsToSendCount[i - 1];
     }
 
-    ghostEntries.numGhostEntries = sdispls[size - 1] + ghostEntries.columnsNeededCount[size - 1];
+    int totalSCount = sdispls[size - 1] + ghostEntries.columnsNeededCount[size - 1];
     int totalRCount = rdispls[size - 1] + ghostEntries.columnsToSendCount[size - 1];
-
-    ghostEntries.columnToGhostIndex = new int[ghostEntries.numGhostEntries];
+    
+    ghostEntries.numGhostEntries = totalSCount;
+    
+    int* sBuffer = new int[totalSCount];
     int* rBuffer = new int[totalRCount];
 
-    int index = 0;
+    index = 0;
 
     for(int i = 0;i < size;i++) {
         for(int j = 0; j < ghostEntries.columnsNeededCount[i]; j++) {
-            ghostEntries.columnToGhostIndex[index] = ghostEntries.columnsNeededFrom[i][j];
+        	int neededColumn = ghostEntries.columnsNeededFrom[i][j];
+            sBuffer[index] = neededColumn;
+            ghostEntries.columnToGhostIndex[neededColumn] = index;
             index++;
         }
     }
 
-    MPI_Alltoallv(ghostEntries.columnToGhostIndex, ghostEntries.columnsNeededCount, sdispls, MPI_INT, rBuffer, ghostEntries.columnsToSendCount, rdispls, MPI_INT, comm);
+    MPI_Alltoallv(sBuffer, ghostEntries.columnsNeededCount, sdispls, MPI_INT, rBuffer, ghostEntries.columnsToSendCount, rdispls, MPI_INT, comm);
 
     ghostEntries.columnsToSendTo = new int*[size];
 
@@ -83,15 +104,13 @@ void identify_ghost_entries(const matrix &A, GhostData &ghostEntries, int size, 
         }
     }
 
+	delete[] sBuffer;
     delete[] rBuffer;
 
-    for(int i = 0;i < size;i++) {
-        delete[] ghostEntries.columnsNeededFrom[i];
-    }
-
-    delete[] ghostEntries.columnsNeededFrom;
     delete[] sdispls;
     delete[] rdispls;
+
+    ghostEntries.ghostVector = new double[ghostEntries.numGhostEntries];
 }
 
 void exchange_ghost_entries(GhostData &ghostEntries, const double* localProductArray, MPI_Comm comm) {
@@ -121,8 +140,6 @@ void exchange_ghost_entries(GhostData &ghostEntries, const double* localProductA
         }
     }
 
-    ghostEntries.ghostVector = new double[ghostEntries.numGhostEntries];
-
     MPI_Alltoallv(sBuffer, ghostEntries.columnsToSendCount, sdispls, MPI_DOUBLE, ghostEntries.ghostVector, ghostEntries.columnsNeededCount, rdispls, MPI_DOUBLE, comm);
 
     delete[] sBuffer;
@@ -130,14 +147,21 @@ void exchange_ghost_entries(GhostData &ghostEntries, const double* localProductA
     delete[] rdispls;
 }
 
-void free(GhostData &ghostEntries) {
+void free_data(GhostData &ghostEntries) {
+    for(int i = 0;i < ghostEntries.size;i++) {
+        delete[] ghostEntries.columnsNeededFrom[i];
+    }
+    
+    delete[] ghostEntries.columnsNeededFrom;
     delete[] ghostEntries.columnsNeededCount;
 
     for(int i = 0;i < ghostEntries.size;i++) {
         delete[] ghostEntries.columnsToSendTo[i];
     }
-
+    
+    delete[] ghostEntries.columnsToSendTo;
     delete[] ghostEntries.columnsToSendCount;
+    
     delete[] ghostEntries.ghostVector;
     delete[] ghostEntries.columnToGhostIndex;
 }

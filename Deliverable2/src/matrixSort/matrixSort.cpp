@@ -12,9 +12,9 @@ int main(int argc, char *argv[]) {
         return 1;
 	}
 	
-	std::string matrixId = argv[1];
+	std::string matrixName = argv[1];
 	
-	matrixSort m("matrices/matrix" + matrixId + ".mtx");
+	matrixSort m("matrices/matrix" + matrixName + ".mtx");
 }
 
 matrixSort::matrixSort(std::string fileName) {
@@ -29,18 +29,13 @@ matrixSort::matrixSort(std::string fileName) {
         file.ignore(2048, '\n');
 
     bool isSorted = file.peek() == '!';
-
-    if(isSorted)
-        file.ignore(2048, '\n');
-
-    int numValues;
-    file >> numRows >> numCols >> numValues;
-
+    
     if(isSorted) {
         file.close();
-        
-        return 0;
     } else {
+      	int numValues;
+      	file >> numRows >> numCols >> numValues;
+    
         struct tuple {
             int row;
             int col;

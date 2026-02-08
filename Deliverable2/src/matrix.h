@@ -14,7 +14,7 @@ public:
     ~matrix();
 
     void coo_to_csr(int* rows, int* cols, double* values);
-    void spvm(const double* localProductArray, int numGhostEntries, const int* ghostColumns, const double* ghostEntries, int size, int rank, double* resultArray);
+    void spvm(const double* localProductArray, int numGhostEntries, const int* columnToGhostIndex, const double* ghostVector, int size, int rank, double* resultArray);
 };
 
 #endif
