@@ -1,8 +1,5 @@
 matrices/*
-<<<<<<< HEAD
 !matrices/.gitkeep
-=======
->>>>>>> fe084e78c46b225475954235d99390287d8ebd96
 src/*.gch
 results/*.err
 results/*.out
