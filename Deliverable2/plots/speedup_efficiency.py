@@ -30,6 +30,11 @@ def create_scaling_plot(df, filename, title, is_strong=True):
         speedup = t1 / m_data['total_time(ms)']
         efficiency = speedup / procs if is_strong else (t1 / m_data['total_time(ms)'])
 
+        # Print the best speedup for this matrix
+        max_speedup = speedup.max()
+        best_proc = procs[speedup.idxmax()]
+        print(f'Matrix {mat}: Best speedup = {max_speedup:.2f} at {best_proc} processes')
+
         # Plot Speedup
         ax1.plot(procs, speedup, marker='o', linewidth=2, label=f'Matrix_{mat}')
         # Plot Efficiency

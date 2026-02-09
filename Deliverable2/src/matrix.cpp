@@ -45,7 +45,7 @@ void matrix::spmv(const double* localProductArray, int numGhostEntries, const in
         		resultArray[i] += vals[j] * localProductArray[col / size];
 			} else {
 				if(columnToGhostIndex[col] == -1) {
-					std::cerr << "error 1" << std::endl;
+					std::cerr << "error: trying to acess ghost entry that was not saved" << std::endl;
 					continue;
 				}
 				
