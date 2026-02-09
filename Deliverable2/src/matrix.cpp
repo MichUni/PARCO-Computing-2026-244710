@@ -33,7 +33,7 @@ void matrix::coo_to_csr(int* rows, int* cols, double* values) {
 		aRows[i + 1] += aRows[i];
 }
 
-void matrix::spvm(const double* localProductArray, int numGhostEntries, const int* columnToGhostIndex, const double* ghostVector, int size, int rank, double* resultArray) {
+void matrix::spmv(const double* localProductArray, int numGhostEntries, const int* columnToGhostIndex, const double* ghostVector, int size, int rank, double* resultArray) {
 	for(int i = 0;i < numRows;i++) {
         int startIndex = aRows[i];
         int endIndex = aRows[i + 1];

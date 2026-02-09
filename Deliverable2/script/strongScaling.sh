@@ -1,0 +1,34 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/.."
+
+g++ -std=c++11 ./src/matrixSort/matrixSort.cpp -o ./src/matrixSort/matrixSort
+
+mpicxx -O3 -Wall ./src/main.cpp ./src/matrix.cpp ./src/ghost_entries.cpp -o ./src/matrixProduct || { echo "Compilation failed"; exit 1; }
+chmod +x ./src/matrixProduct
+
+# matrices array
+matricesArr=(0 1 2 3 4)
+
+# threads array
+threadsArr=(1 2 4 8 16 32 64 128)
+
+# output CSV file
+outputFile="results/strongScalingResults.csv"
+echo "matrix,processes,max_commutation(ms),max_computation(ms),total_time(ms),gflops,min_non_zero_values,max_non_zero_values,avg_non_zero_values,min_ghost_entries,max_ghost_entries,avg_ghost_entries" > "$outputFile"
+
+execute() {
+  local output
+  output=$(mpirun -np $2 ./src/matrixProduct _st$1)
+  
+  echo "$output"
+}
+
+for matrix in "${matricesArr[@]}"; do
+	./src/matrixSort/matrixSort _st"$matrix"
+
+	for threads in "${threadsArr[@]}"; do
+    		result=$(execute "$matrix" "$threads")
+    		echo "$result" >> "$outputFile"
+	done
+done

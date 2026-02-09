@@ -71,7 +71,7 @@ The project can be run on two different environments
 ###### LOCAL
 To run the benchmark **locally** open your terminal and execute the `bash` files:
 ```
-chmod -x scipts/timingsBenchmark.sh
+chmod -x scripts/timingsBenchmark.sh
 chmod -x scripts/perfBenchmark.sh
 bash scripts/timingsBenchmark.sh
 bash scripts/perfBenchmark.sh

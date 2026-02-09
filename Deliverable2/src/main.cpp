@@ -188,7 +188,7 @@ int main(int argc, char *argv[]) {
 	for(int i = 0;i < 3;i++) {
 		std::fill_n(localResultArray, localNumRows, 0);	
 		exchange_ghost_entries(gd, localProductArray, MPI_COMM_WORLD);
-		A.spvm(localProductArray, numGhostEntries, gd.columnToGhostIndex, gd.ghostVector, size, rank, localResultArray);
+		A.spmv(localProductArray, numGhostEntries, gd.columnToGhostIndex, gd.ghostVector, size, rank, localResultArray);
 	}
 	
 	MPI_Barrier(MPI_COMM_WORLD);
@@ -208,7 +208,7 @@ int main(int argc, char *argv[]) {
 		commutationTime[i] = (end - start) * 1000.0;
 		
 		GET_TIME(start);
-		A.spvm(localProductArray, numGhostEntries, gd.columnToGhostIndex, gd.ghostVector, size, rank, localResultArray);
+		A.spmv(localProductArray, numGhostEntries, gd.columnToGhostIndex, gd.ghostVector, size, rank, localResultArray);
 		GET_TIME(end);
 		
 		computationTime[i] = (end - start) * 1000.0;
