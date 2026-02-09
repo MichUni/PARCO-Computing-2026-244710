@@ -193,7 +193,7 @@ int main(int argc, char *argv[]) {
 	
 	MPI_Barrier(MPI_COMM_WORLD);
 	
-	double* commutationTime = new double[ITERATIONS];
+	double* computationTime = new double[ITERATIONS];
 	double* computationTime = new double[ITERATIONS];
 	
 	double start, end;
@@ -205,7 +205,7 @@ int main(int argc, char *argv[]) {
 		exchange_ghost_entries(gd, localProductArray, MPI_COMM_WORLD);
 		GET_TIME(end);
 		
-		commutationTime[i] = (end - start) * 1000.0;
+		computationTime[i] = (end - start) * 1000.0;
 		
 		GET_TIME(start);
 		A.spmv(localProductArray, numGhostEntries, gd.columnToGhostIndex, gd.ghostVector, size, rank, localResultArray);
@@ -214,17 +214,17 @@ int main(int argc, char *argv[]) {
 		computationTime[i] = (end - start) * 1000.0;
 	}
 	
-	qsort(commutationTime, ITERATIONS, sizeof(double), compareDoubles);
+	qsort(computationTime, ITERATIONS, sizeof(double), compareDoubles);
 	qsort(computationTime, ITERATIONS, sizeof(double), compareDoubles);
 
 	int idx90 = (int)(ITERATIONS * 0.9);
-	double p90_commutation = commutationTime[idx90];
+	double p90_computation = computationTime[idx90];
 	double p90_computation = computationTime[idx90];
 	
-    double max_commutation = 0.0;
+    double max_computation = 0.0;
     double max_computation = 0.0;
     
-    MPI_Reduce(&p90_commutation, &max_commutation, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
+    MPI_Reduce(&p90_computation, &max_computation, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
     MPI_Reduce(&p90_computation, &max_computation, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);
     
     int min_nz, max_nz;
@@ -244,9 +244,9 @@ int main(int argc, char *argv[]) {
     	double avg_nz = ((double)numValues) / size;
     	double avg_ge = ((double)sum_ge) / size;		//avg ghost entries
     	
-    	double total_time = max_commutation + max_computation;
+    	double total_time = max_computation + max_computation;
     	
-    	std::cout << matrixName << "," << size << "," << max_commutation << "," << max_computation << "," << total_time << "," << gflops << "," << min_nz << "," << max_nz << "," << avg_nz << "," << min_ge << "," << max_ge << "," << avg_ge << std::endl;
+    	std::cout << matrixName << "," << size << "," << max_computation << "," << max_computation << "," << total_time << "," << gflops << "," << min_nz << "," << max_nz << "," << avg_nz << "," << min_ge << "," << max_ge << "," << avg_ge << std::endl;
     	
 		delete[] rows;
 		delete[] cols;
@@ -262,7 +262,7 @@ int main(int argc, char *argv[]) {
 	delete[] localProductArray;
 	delete[] localResultArray;
 	
-	delete[] commutationTime;
+	delete[] computationTime;
 	delete[] computationTime;
   
   	free_data(gd);

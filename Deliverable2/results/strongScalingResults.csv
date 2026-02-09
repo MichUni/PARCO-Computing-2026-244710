@@ -1,4 +1,4 @@
-matrix,processes,max_commutation(ms),max_computation(ms),total_time(ms),gflops,min_non_zero_values,max_non_zero_values,avg_non_zero_values,min_ghost_entries,max_ghost_entries,avg_ghost_entries
+matrix,processes,max_communication(ms),max_computation(ms),total_time(ms),gflops,min_non_zero_values,max_non_zero_values,avg_non_zero_values,min_ghost_entries,max_ghost_entries,avg_ghost_entries
 _st0,1,0.00286102,24.781,24.7838,0.660598,8185136,8185136,8.18514e+06,0,0,0
 _st0,2,0.695944,12.073,12.769,1.36635,4092490,4092646,4.09257e+06,80535,80535,80535
 _st0,4,0.921965,5.92017,6.84214,2.76706,2046219,2046394,2.04628e+06,120615,120625,120621

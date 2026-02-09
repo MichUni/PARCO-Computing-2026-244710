@@ -22,7 +22,7 @@ def plot_bars():
     for i, mat in enumerate(mats):
         data = df_s[df_s['matrix'] == mat].sort_values('processes')
         axes[i].bar(data['processes'].astype(str), data['max_computation(ms)'], label='Comp.', color='#2c3e50')
-        axes[i].bar(data['processes'].astype(str), data['max_commutation(ms)'], 
+        axes[i].bar(data['processes'].astype(str), data['max_communication(ms)'], 
                     bottom=data['max_computation(ms)'], label='Comm.', color='#3498db')
         axes[i].set_title(mat)
         axes[i].set_xlabel('Processes')
@@ -36,7 +36,7 @@ def plot_bars():
     # Weak Scaling
     plt.figure(figsize=(10, 6))
     plt.bar(df_w['processes'].astype(str), df_w['max_computation(ms)'], label='Comp.', color='#2c3e50')
-    plt.bar(df_w['processes'].astype(str), df_w['max_commutation(ms)'], 
+    plt.bar(df_w['processes'].astype(str), df_w['max_communication(ms)'], 
             bottom=df_w['max_computation(ms)'], label='Comm.', color='#3498db')
     plt.title('Weak Scaling Performance')
     plt.ylabel('Time (ms)')

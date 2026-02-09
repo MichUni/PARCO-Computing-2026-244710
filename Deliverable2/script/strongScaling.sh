@@ -15,7 +15,7 @@ threadsArr=(1 2 4 8 16 32 64 128)
 
 # output CSV file
 outputFile="results/strongScalingResults.csv"
-echo "matrix,processes,max_commutation(ms),max_computation(ms),total_time(ms),gflops,min_non_zero_values,max_non_zero_values,avg_non_zero_values,min_ghost_entries,max_ghost_entries,avg_ghost_entries" > "$outputFile"
+echo "matrix,processes,max_communication(ms),max_computation(ms),total_time(ms),gflops,min_non_zero_values,max_non_zero_values,avg_non_zero_values,min_ghost_entries,max_ghost_entries,avg_ghost_entries" > "$outputFile"
 
 execute() {
   local output
